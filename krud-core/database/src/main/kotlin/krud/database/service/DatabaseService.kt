@@ -11,12 +11,10 @@ import krud.base.env.Tracer
 import krud.base.settings.catalog.section.DatabaseSettings
 import krud.database.util.IsolationLevel
 import org.flywaydb.core.Flyway
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.DatabaseConfig
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.vendors.currentDialect
+import org.jetbrains.exposed.v1.core.DatabaseConfig
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -238,20 +236,6 @@ internal object DatabaseService {
      */
     fun close() {
         hikariDataSource?.close()
-    }
-
-    /**
-     * Returns a list of all tables in the database.
-     */
-    fun dumpTables(): List<String> {
-        return runCatching {
-            transaction(db = database) {
-                currentDialect.allTablesNames()
-            }
-        }.getOrElse { error ->
-            tracer.error(message = "Failed to dump tables.", cause = error)
-            emptyList()
-        }
     }
 
     /**

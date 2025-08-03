@@ -4,7 +4,7 @@
 
 import io.ktor.test.dispatcher.*
 import io.mockk.mockk
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import krud.base.context.SessionContext
 import krud.base.test.TestUtils
 import krud.database.test.DatabaseTestUtils

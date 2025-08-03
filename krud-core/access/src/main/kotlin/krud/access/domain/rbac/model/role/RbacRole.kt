@@ -11,7 +11,7 @@ import krud.database.model.Meta
 import krud.database.schema.admin.rbac.RbacFieldRuleTable
 import krud.database.schema.admin.rbac.RbacRoleTable
 import krud.database.schema.admin.rbac.RbacScopeRuleTable
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 import kotlin.uuid.Uuid
 
 /**

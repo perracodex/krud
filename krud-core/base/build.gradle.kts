@@ -10,6 +10,8 @@ dependencies {
 
     implementation(libs.exposed.core)
     implementation(libs.exposed.crypt)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.kotlin.datetime)
     implementation(libs.exposed.pagination)
 
     implementation(libs.google.phonenumber)

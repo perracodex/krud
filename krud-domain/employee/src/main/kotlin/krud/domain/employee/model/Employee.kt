@@ -16,7 +16,7 @@ import krud.database.schema.employee.type.MaritalStatus
 import krud.database.schema.employment.EmploymentTable
 import krud.domain.contact.model.Contact
 import krud.domain.employment.model.Employment
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 import kotlin.uuid.Uuid
 
 /**

@@ -4,12 +4,12 @@
 
 package krud.database.model
 
-import kotlinx.datetime.Instant
-import kotlinx.datetime.toKotlinInstant
+import kotlin.time.Instant
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import krud.database.schema.base.BaseTable
 import krud.database.schema.base.TimestampedTable
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 import kotlin.uuid.Uuid
 
 /**
@@ -22,9 +22,9 @@ import kotlin.uuid.Uuid
  */
 @Serializable
 public data class Meta(
-    val createdAt: Instant,
+    @Contextual val createdAt: Instant,
     val createdBy: Uuid? = null,
-    val updatedAt: Instant,
+    @Contextual val updatedAt: Instant,
     val updatedBy: Uuid? = null
 ) {
     public companion object {
@@ -38,9 +38,12 @@ public data class Meta(
          * @return The mapped [Meta] instance with timestamps in UTC.
          */
         public fun from(row: ResultRow, table: TimestampedTable): Meta {
+            val createdAtJava = row[table.createdAt].toInstant()
+            val updatedAtJava = row[table.updatedAt].toInstant()
+
             return Meta(
-                createdAt = row[table.createdAt].toInstant().toKotlinInstant(),
-                updatedAt = row[table.updatedAt].toInstant().toKotlinInstant()
+                createdAt = Instant.fromEpochSeconds(epochSeconds = createdAtJava.epochSecond, nanosecondAdjustment = createdAtJava.nano),
+                updatedAt = Instant.fromEpochSeconds(epochSeconds = updatedAtJava.epochSecond, nanosecondAdjustment = updatedAtJava.nano)
             )
         }
 
@@ -54,10 +57,13 @@ public data class Meta(
          * @return The mapped [Meta] instance with timestamps in UTC.
          */
         public fun from(row: ResultRow, table: BaseTable): Meta {
+            val createdAtJava = row[table.createdAt].toInstant()
+            val updatedAtJava = row[table.updatedAt].toInstant()
+
             return Meta(
-                createdAt = row[table.createdAt].toInstant().toKotlinInstant(),
+                createdAt = Instant.fromEpochSeconds(epochSeconds = createdAtJava.epochSecond, nanosecondAdjustment = createdAtJava.nano),
                 createdBy = row[table.createdBy],
-                updatedAt = row[table.updatedAt].toInstant().toKotlinInstant(),
+                updatedAt = Instant.fromEpochSeconds(epochSeconds = updatedAtJava.epochSecond, nanosecondAdjustment = updatedAtJava.nano),
                 updatedBy = row[table.updatedBy]
             )
         }

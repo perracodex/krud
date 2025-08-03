@@ -5,8 +5,7 @@
 package krud.database.column
 
 import krud.base.error.validator.base.IValidator
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.v1.core.*
 
 /**
  * Custom column with validation.

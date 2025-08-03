@@ -4,7 +4,7 @@
 
 package krud.database.test
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import krud.base.settings.AppSettings
 import krud.base.util.DateTimeUtils.current
@@ -56,7 +56,7 @@ public object DatabaseTestUtils {
         val year: Int = (1960..2000).random()
         val month: Int = (1..12).random()
         val day: Int = (1..28).random()
-        return LocalDate(year = year, monthNumber = month, dayOfMonth = day)
+        return LocalDate(year = year, month = month, day = day)
     }
 
     /**
@@ -68,16 +68,15 @@ public object DatabaseTestUtils {
         val startYear: Int = threshold.year + 18 + Random.nextInt(from = 0, until = 5)
         val startMonth: Int = Random.nextInt(from = 1, until = 13)
         val startDay: Int = Random.nextInt(from = 1, until = 29)
-        val startDate = LocalDate(year = startYear, monthNumber = startMonth, dayOfMonth = startDay)
+        val startDate = LocalDate(year = startYear, month = startMonth, day = startDay)
 
         // Give 80% chance for isActive to be true.
         val isActive: Boolean = Random.nextInt(from = 0, until = 100) < 80
 
         val endDate: LocalDate? = if (!isActive) {
-            LocalDate(
-                year = startYear + Random.nextInt(from = 1, until = 5),
-                monthNumber = Random.nextInt(from = 1, until = 13),
-                dayOfMonth = Random.nextInt(from = 1, until = 29)
+            LocalDate(year = startYear + Random.nextInt(from = 1, until = 5),
+                month = Random.nextInt(from = 1, until = 13),
+                day = Random.nextInt(from = 1, until = 29)
             )
         } else {
             null

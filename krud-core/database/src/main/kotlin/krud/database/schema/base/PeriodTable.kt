@@ -5,8 +5,8 @@
 package krud.database.schema.base
 
 import kotlinx.datetime.LocalDate
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.kotlin.datetime.date
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.datetime.date
 
 /**
  * Base class for database tables that manage temporal data modelling. Designed to be extended,

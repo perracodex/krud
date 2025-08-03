@@ -14,9 +14,10 @@ import krud.database.schema.employment.EmploymentTable
 import krud.database.util.transaction
 import krud.domain.employment.model.Employment
 import krud.domain.employment.model.EmploymentRequest
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.statements.UpdateBuilder
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.core.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
+import org.jetbrains.exposed.v1.jdbc.*
 import kotlin.uuid.Uuid
 
 /**

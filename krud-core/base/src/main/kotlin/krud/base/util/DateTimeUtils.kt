@@ -4,14 +4,25 @@
 
 package krud.base.util
 
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toJavaLocalDate
+import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.datetime.toKotlinLocalDateTime
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.todayIn
 import kotlinx.serialization.Serializable
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
+import kotlin.time.Instant
+import kotlin.time.toJavaInstant
 import java.time.Instant as JavaInstant
 
 /**
@@ -43,8 +54,8 @@ public object DateTimeUtils {
         // Calculate the difference in years.
         val age: Int = currentDate.year - this.year
 
-        val birthdayAlreadyPassed: Boolean = (this.monthNumber < currentDate.monthNumber) ||
-                (this.monthNumber == currentDate.monthNumber && this.dayOfMonth <= currentDate.dayOfMonth)
+        val birthdayAlreadyPassed: Boolean = (month.number < currentDate.month.number) ||
+                (month.number == currentDate.month.number && day <= currentDate.day)
 
         // Adjust the age if the birthday hasn't occurred this year yet.
         return age.takeIf { birthdayAlreadyPassed } ?: (age - 1)
@@ -80,8 +91,8 @@ public object DateTimeUtils {
      */
     public fun LocalDateTime.formatted(timeDelimiter: String = "T", precision: Int = 9): String {
         val year: String = "%04d".format(this.year)
-        val month: String = "%02d".format(this.monthNumber)
-        val day: String = "%02d".format(this.dayOfMonth)
+        val month: String = "%02d".format(this.month)
+        val day: String = "%02d".format(day)
         val hour: String = "%02d".format(this.hour)
         val minute: String = "%02d".format(this.minute)
         val second: String = "%02d".format(this.second)
@@ -113,14 +124,14 @@ public object DateTimeUtils {
      * Returns the current date-time in the system's default time zone.
      */
     public fun LocalDateTime.Companion.current(): LocalDateTime {
-        return Clock.System.now().toLocalDateTime(timeZone = TimeZone.current())
+        return Clock.System.now().toLocalDateTime(timeZone = TimeZone.currentSystemDefault())
     }
 
     /**
      * Returns the current date in the system's default time zone.
      */
     private fun LocalDate.Companion.current(): LocalDate {
-        return Clock.System.todayIn(timeZone = TimeZone.current())
+        return Clock.System.todayIn(timeZone = TimeZone.currentSystemDefault())
     }
 
     /**
@@ -179,7 +190,7 @@ public object DateTimeUtils {
         return LocalDateTime(
             year = year,
             month = month,
-            dayOfMonth = dayOfMonth,
+            day = day,
             hour = 0,
             minute = 0,
             second = 0,
@@ -194,7 +205,7 @@ public object DateTimeUtils {
         return LocalDateTime(
             year = year,
             month = month,
-            dayOfMonth = dayOfMonth,
+            day = day,
             hour = 59,
             minute = 59,
             second = 59,

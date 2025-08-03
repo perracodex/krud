@@ -17,7 +17,7 @@ import krud.base.test.TestUtils
 import krud.database.schema.admin.rbac.type.RbacAccessLevel
 import krud.database.schema.admin.rbac.type.RbacScope
 import krud.database.test.DatabaseTestUtils
-import org.jetbrains.exposed.exceptions.ExposedSQLException
+import org.jetbrains.exposed.v1.exceptions.ExposedSQLException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.test.*

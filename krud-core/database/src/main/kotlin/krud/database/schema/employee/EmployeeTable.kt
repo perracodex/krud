@@ -13,8 +13,8 @@ import krud.database.column.validVarchar
 import krud.database.schema.base.BaseTable
 import krud.database.schema.employee.type.Honorific
 import krud.database.schema.employee.type.MaritalStatus
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.kotlin.datetime.date
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.datetime.date
 import kotlin.uuid.Uuid
 
 /**

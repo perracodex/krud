@@ -9,11 +9,10 @@ import kotlinx.serialization.Serializable
 import krud.base.env.HealthCheckApi
 import krud.base.env.Tracer
 import krud.base.settings.catalog.section.DatabaseSettings
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.name
-import org.jetbrains.exposed.sql.statements.api.ExposedConnection
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.vendors.currentDialect
+import org.jetbrains.exposed.v1.core.vendors.currentDialect
+import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.statements.api.ExposedConnection
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
 /**
  * Represents the database health check.
@@ -23,7 +22,6 @@ import org.jetbrains.exposed.sql.vendors.currentDialect
  * @property datasource The [Datasource] information.
  * @property connectionTest The [ConnectionTest] information.
  * @property configuration The [DatabaseConfiguration] settings.
- * @property tables The list of tables in the database.
  */
 @HealthCheckApi
 @Serializable
@@ -32,8 +30,7 @@ public data class DatabaseHealth private constructor(
     val isAlive: Boolean,
     val datasource: Datasource?,
     val connectionTest: ConnectionTest?,
-    val configuration: DatabaseConfiguration,
-    val tables: List<String>
+    val configuration: DatabaseConfiguration
 ) {
     init {
         val className: String? = this::class.simpleName
@@ -44,10 +41,6 @@ public data class DatabaseHealth private constructor(
 
         datasource ?: run {
             errors.add("$className. Undefined datasource. $configuration")
-        }
-
-        if (tables.isEmpty()) {
-            errors.add("$className. No tables detected. $configuration")
         }
 
         connectionTest?.let {
@@ -94,8 +87,8 @@ public data class DatabaseHealth private constructor(
              * @return A [Result] containing the [ConnectionTest] instance, or an exception if the test failed.
              */
             fun build(database: Database?): Result<ConnectionTest> {
-                return runCatching<ConnectionTest> {
-                    requireNotNull(database) { "Database must not be null." }
+                return runCatching {
+                    requireNotNull(value = database) { "Database must not be null." }
                     val connector: ExposedConnection<*> = database.connector()
 
                     try {
@@ -223,14 +216,12 @@ public data class DatabaseHealth private constructor(
                 val connectionTest: ConnectionTest? = databaseTest.getOrNull()
                 val datasource: Datasource? = Datasource.build(datasource = DatabaseService.hikariDataSource)
                 val configuration: DatabaseConfiguration = DatabaseConfiguration.build(settings = settings)
-                val tables: List<String> = DatabaseService.dumpTables()
 
                 val databaseHealth = DatabaseHealth(
                     isAlive = isAlive,
                     connectionTest = connectionTest,
                     datasource = datasource,
-                    configuration = configuration,
-                    tables = tables
+                    configuration = configuration
                 )
 
                 if (databaseTest.isFailure) {
@@ -245,7 +236,6 @@ public data class DatabaseHealth private constructor(
                     connectionTest = null,
                     datasource = null,
                     configuration = DatabaseConfiguration.build(settings = settings),
-                    tables = emptyList(),
                 ).apply {
                     errors.add("Failed to retrieve database health check. ${error.message}")
                 }

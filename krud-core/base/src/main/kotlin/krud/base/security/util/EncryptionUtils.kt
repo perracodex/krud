@@ -6,8 +6,7 @@ package krud.base.security.util
 
 import krud.base.settings.AppSettings
 import krud.base.settings.catalog.section.security.node.EncryptionSettings
-import org.jetbrains.exposed.crypt.Algorithms
-import org.jetbrains.exposed.crypt.Encryptor
+import org.jetbrains.exposed.v1.crypt.*
 
 /**
  * Utility class for database field encryption.

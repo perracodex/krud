@@ -12,6 +12,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
     implementation(libs.exposed.kotlin.datetime)
 
     implementation(libs.koin.ktor)

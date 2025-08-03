@@ -4,9 +4,7 @@
 
 package krud.database.column
 
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.TextColumnType
+import org.jetbrains.exposed.v1.core.*
 
 /**
  * A custom column type for supporting PostgreSQL `citext` (case-insensitive text) data type in Exposed.

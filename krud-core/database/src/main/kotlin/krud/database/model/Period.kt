@@ -7,7 +7,7 @@ package krud.database.model
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 import krud.database.schema.base.PeriodTable
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 
 /**
  * Represents a time period.

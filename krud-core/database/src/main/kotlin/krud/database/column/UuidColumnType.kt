@@ -4,11 +4,11 @@
 
 package krud.database.column
 
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.Table.Dual.clientDefault
-import org.jetbrains.exposed.sql.vendors.MariaDBDialect
-import org.jetbrains.exposed.sql.vendors.currentDialect
-import java.sql.ResultSet
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.core.Table.Dual.clientDefault
+import org.jetbrains.exposed.v1.core.statements.api.RowApi
+import org.jetbrains.exposed.v1.core.vendors.MariaDBDialect
+import org.jetbrains.exposed.v1.core.vendors.currentDialect
 import java.util.*
 import kotlin.uuid.Uuid
 import kotlin.uuid.toJavaUuid
@@ -28,25 +28,34 @@ import kotlin.uuid.toKotlinUuid
 internal class UuidColumnType : ColumnType<Uuid>() {
     override fun sqlType(): String = currentDialect.dataTypeProvider.uuidType()
 
-    override fun valueFromDB(value: Any): Uuid = when {
-        value is Uuid -> value
-        value is UUID -> value.toKotlinUuid()
-        value is ByteArray -> Uuid.fromByteArray(byteArray = value)
-        value is String && value.matches(regex = uuidRegexp) -> Uuid.parse(value)
-        value is String -> Uuid.fromByteArray(byteArray = value.toByteArray())
+    override fun valueFromDB(value: Any): Uuid = when (value) {
+        is Uuid -> value
+        is UUID -> value.toKotlinUuid()
+        is ByteArray -> Uuid.fromByteArray(byteArray = value)
+        is String if value.matches(regex = uuidRegexp) -> Uuid.parse(uuidString = value)
+        is String -> Uuid.fromByteArray(byteArray = value.toByteArray())
         else -> error("Unexpected value of type Uuid: $value of ${value::class.qualifiedName}")
     }
 
     override fun notNullValueToDB(value: Uuid): Any {
-        return currentDialect.dataTypeProvider.uuidToDB(value.toJavaUuid())
+        return currentDialect.dataTypeProvider.uuidToDB(value = value.toJavaUuid())
     }
 
     override fun nonNullValueToString(value: Uuid): String = "'$value'"
 
-    override fun readObject(rs: ResultSet, index: Int): Any? {
-        return when (currentDialect) {
-            is MariaDBDialect -> rs.getBytes(index)
-            else -> super.readObject(rs = rs, index = index)
+    override fun readObject(rs: RowApi, index: Int): Any? {
+        val raw: Any? = rs.getObject(index)
+        return when {
+            currentDialect is MariaDBDialect -> when (raw) {
+                is ByteArray -> Uuid.fromByteArray(byteArray = raw)
+                is UUID -> raw.toKotlinUuid()
+                else -> error("Unexpected MariaDB UUID value: $raw")
+            }
+
+            raw is UUID -> raw.toKotlinUuid()
+            raw is ByteArray -> Uuid.fromByteArray(byteArray = raw)
+            raw is String && uuidRegexp.matches(input = raw) -> Uuid.parse(uuidString = raw)
+            else -> super.readObject(rs, index)
         }
     }
 

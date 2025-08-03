@@ -5,9 +5,9 @@
 package krud.database.util
 
 import krud.base.context.SessionContext
-import org.jetbrains.exposed.sql.Transaction
-import org.jetbrains.exposed.sql.statements.StatementContext
-import org.jetbrains.exposed.sql.statements.StatementInterceptor
+import org.jetbrains.exposed.v1.core.Transaction
+import org.jetbrains.exposed.v1.core.statements.StatementContext
+import org.jetbrains.exposed.v1.core.statements.StatementInterceptor
 
 /**
  * Intercepts SQL statements to perform auditing actions before execution.

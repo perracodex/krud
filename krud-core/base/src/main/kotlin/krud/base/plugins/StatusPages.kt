@@ -13,7 +13,7 @@ import io.perracodex.exposed.pagination.PaginationError
 import krud.base.env.Tracer
 import krud.base.error.*
 import krud.base.settings.AppSettings
-import org.jetbrains.exposed.exceptions.ExposedSQLException
+import org.jetbrains.exposed.v1.exceptions.ExposedSQLException
 
 /**
  * Install the [StatusPages] feature for handling HTTP status codes.

@@ -8,7 +8,7 @@ import io.perracodex.exposed.pagination.MapModel
 import kotlinx.serialization.Serializable
 import krud.database.model.Meta
 import krud.database.schema.contact.ContactTable
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 import kotlin.uuid.Uuid
 
 /**

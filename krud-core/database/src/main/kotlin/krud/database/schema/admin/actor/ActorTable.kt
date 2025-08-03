@@ -9,10 +9,8 @@ import krud.database.column.autoGenerate
 import krud.database.column.kotlinUuid
 import krud.database.schema.admin.rbac.RbacRoleTable
 import krud.database.schema.base.TimestampedTable
-import org.jetbrains.exposed.crypt.Encryptor
-import org.jetbrains.exposed.crypt.encryptedVarchar
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.ReferenceOption
+import org.jetbrains.exposed.v1.crypt.*
+import org.jetbrains.exposed.v1.core.*
 import kotlin.uuid.Uuid
 
 /**

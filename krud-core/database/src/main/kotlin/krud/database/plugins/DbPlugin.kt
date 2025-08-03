@@ -8,7 +8,7 @@ import io.ktor.server.application.*
 import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
 import krud.base.settings.AppSettings
 import krud.database.service.DatabaseService
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.v1.core.Table
 
 /**
  * Custom Ktor plugin to configure the database.

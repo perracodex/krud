@@ -11,12 +11,10 @@ import krud.database.schema.admin.actor.ActorTable
 import krud.database.schema.admin.rbac.RbacFieldRuleTable
 import krud.database.schema.admin.rbac.RbacRoleTable
 import krud.database.schema.admin.rbac.RbacScopeRuleTable
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.statements.UpdateBuilder
-import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
+import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import kotlin.uuid.Uuid
 
 /**

@@ -20,7 +20,7 @@ import krud.domain.employee.model.EmployeeRequest
 import krud.domain.employee.repository.IEmployeeRepository
 import krud.domain.employee.service.EmployeeService
 import krud.domain.employee.test.EmployeeTestUtils
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.v1.jdbc.transactions.experimental.newSuspendedTransaction
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
@@ -442,7 +442,7 @@ class PaginationTest : KoinComponent {
                     firstName = name,
                     lastName = "Surname_$index",
                     workEmail = "$name.surname_$index@work.com",
-                    dob = LocalDate(year = 2000, monthNumber = 1, dayOfMonth = (index % 28) + 1), // Ensure valid day of month.
+                    dob = LocalDate(year = 2000, month = 1, day = (index % 28) + 1), // Ensure valid day of month.
                     honorific = Honorific.entries.random(),
                     maritalStatus = MaritalStatus.entries.random()
                 )
@@ -522,7 +522,7 @@ class PaginationTest : KoinComponent {
                     firstName = name,
                     lastName = "Surname_$index",
                     workEmail = "$name.surname_$index@work.com",
-                    dob = LocalDate(year = 2000, monthNumber = 1, dayOfMonth = (index % 28) + 1),
+                    dob = LocalDate(year = 2000, month = 1, day = (index % 28) + 1),
                     honorific = Honorific.MS,
                     maritalStatus = MaritalStatus.SINGLE
                 )

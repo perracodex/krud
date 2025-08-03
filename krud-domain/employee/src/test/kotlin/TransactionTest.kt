@@ -19,8 +19,8 @@ import krud.domain.employee.di.EmployeeDomainInjection
 import krud.domain.employee.model.EmployeeRequest
 import krud.domain.employee.repository.IEmployeeRepository
 import krud.domain.employee.test.EmployeeTestUtils
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
@@ -150,7 +150,7 @@ class TransactionTest : KoinComponent {
                     val invalidEmployeeRequest = EmployeeRequest(
                         firstName = "AnyName",
                         lastName = "AnySurname",
-                        dob = LocalDate(year = 2000, monthNumber = 1, dayOfMonth = 1),
+                        dob = LocalDate(year = 2000, month = 1, day = 1),
                         workEmail = "X".repeat(100), // Invalid email length..
                         honorific = Honorific.MR,
                         maritalStatus = MaritalStatus.SINGLE,

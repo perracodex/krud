@@ -6,10 +6,8 @@ package krud.database.column
 
 import krud.base.error.validator.base.IValidator
 import krud.base.error.validator.base.ValidationException
-import org.jetbrains.exposed.crypt.EncryptedVarCharColumnType
-import org.jetbrains.exposed.crypt.Encryptor
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.crypt.*
 
 /**
  * Custom encrypted column with validation.

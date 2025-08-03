@@ -9,7 +9,6 @@ import io.ktor.server.testing.*
 import io.ktor.test.dispatcher.*
 import io.ktor.util.collections.*
 import kotlinx.coroutines.*
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import krud.access.test.RbacTestUtils
 import krud.base.test.TestUtils

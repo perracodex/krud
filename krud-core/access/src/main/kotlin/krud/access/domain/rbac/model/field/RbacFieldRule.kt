@@ -9,7 +9,7 @@ import krud.database.model.Meta
 import krud.database.schema.admin.rbac.RbacFieldRuleTable
 import krud.database.schema.admin.rbac.type.RbacAccessLevel
 import krud.database.schema.admin.rbac.type.RbacScope
-import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.v1.core.ResultRow
 import kotlin.uuid.Uuid
 
 /**

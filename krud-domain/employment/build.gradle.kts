@@ -11,6 +11,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
     implementation(libs.exposed.pagination)
 
     implementation(libs.koin.ktor)

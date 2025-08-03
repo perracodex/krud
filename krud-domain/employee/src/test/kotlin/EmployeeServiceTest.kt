@@ -6,8 +6,7 @@ import io.ktor.test.dispatcher.*
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.perracodex.exposed.pagination.Page
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import krud.access.domain.actor.di.ActorDomainInjection
 import krud.access.domain.rbac.di.RbacDomainInjection
@@ -25,11 +24,12 @@ import krud.domain.employee.model.EmployeeRequest
 import krud.domain.employee.repository.IEmployeeRepository
 import krud.domain.employee.service.EmployeeService
 import krud.domain.employee.test.EmployeeTestUtils
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.v1.jdbc.transactions.experimental.newSuspendedTransaction
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 import kotlin.test.*
+import kotlin.time.Clock
 import kotlin.uuid.Uuid
 
 class EmployeeServiceTest : KoinComponent {
@@ -59,7 +59,7 @@ class EmployeeServiceTest : KoinComponent {
             Honorific.entries.forEach { honorific ->
 
                 val timestamp: Instant = Clock.System.now()
-                val dob = LocalDate(year = 2000, monthNumber = 1, dayOfMonth = 1 + index)
+                val dob = LocalDate(year = 2000, month = 1, day = 1 + index)
                 val firstName = "AnyName_$index"
                 val lastName = "AnySurname_$index"
                 val employeeId: Uuid = Uuid.random()
@@ -134,7 +134,7 @@ class EmployeeServiceTest : KoinComponent {
                     firstName = "AnyName_$index",
                     lastName = "AnySurname_$index",
                     workEmail = "AnyName.AnySurname.$index@work.com",
-                    dob = LocalDate(year = 2000, monthNumber = 1, dayOfMonth = 1 + index),
+                    dob = LocalDate(year = 2000, month = 1, day = 1 + index),
                     honorific = Honorific.MR,
                     maritalStatus = maritalStatus
                 )

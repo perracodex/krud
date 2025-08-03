@@ -16,9 +16,10 @@ import krud.domain.contact.repository.IContactRepository
 import krud.domain.employee.model.Employee
 import krud.domain.employee.model.EmployeeFilterSet
 import krud.domain.employee.model.EmployeeRequest
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.statements.UpdateBuilder
+import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.core.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
+import org.jetbrains.exposed.v1.jdbc.*
 import kotlin.uuid.Uuid
 
 /**

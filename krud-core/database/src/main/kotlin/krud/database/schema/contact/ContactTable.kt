@@ -11,8 +11,7 @@ import krud.database.column.kotlinUuid
 import krud.database.column.validVarchar
 import krud.database.schema.base.BaseTable
 import krud.database.schema.employee.EmployeeTable
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.ReferenceOption
+import org.jetbrains.exposed.v1.core.*
 import kotlin.uuid.Uuid
 
 /**

@@ -4,7 +4,7 @@
 
 package krud.database.extensions
 
-import org.jetbrains.exposed.sql.Query
+import org.jetbrains.exposed.v1.jdbc.Query
 
 /**
  * Extension function to check if any row exists that matches the query conditions

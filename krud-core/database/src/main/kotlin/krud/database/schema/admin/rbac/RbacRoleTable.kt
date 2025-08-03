@@ -7,7 +7,7 @@ package krud.database.schema.admin.rbac
 import krud.database.column.autoGenerate
 import krud.database.column.kotlinUuid
 import krud.database.schema.base.TimestampedTable
-import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.v1.core.*
 import kotlin.uuid.Uuid
 
 /**

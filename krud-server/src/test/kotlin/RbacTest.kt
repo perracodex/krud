@@ -8,7 +8,6 @@ import io.ktor.http.*
 import io.ktor.server.testing.*
 import io.ktor.test.dispatcher.*
 import io.mockk.mockk
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import krud.access.test.RbacTestUtils
 import krud.base.context.SessionContext

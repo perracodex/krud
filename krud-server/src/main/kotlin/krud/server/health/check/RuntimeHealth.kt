@@ -5,8 +5,9 @@
 package krud.server.health.check
 
 import io.ktor.server.application.*
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.datetime.LocalDateTime
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import krud.base.env.EnvironmentType
 import krud.base.env.HealthCheckApi
@@ -30,7 +31,7 @@ public data class RuntimeHealth private constructor(
     val machineId: Int,
     val environment: EnvironmentType,
     val developmentModeEnabled: Boolean,
-    val utc: Instant,
+    @Contextual val utc: Instant,
     val local: LocalDateTime,
 ) {
     internal constructor(call: ApplicationCall, settings: RuntimeSettings) : this(
