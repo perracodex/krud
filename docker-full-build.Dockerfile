@@ -5,7 +5,7 @@
 
 #-------------------------------------------------------------------------------------------------
 # Build stage.
-FROM gradle:8.8-jdk17 AS build
+FROM gradle:8.11.1-jdk17 AS build
 LABEL authors="perracodex"
 LABEL image.tag="krud-build"
 LABEL name="krud-build-image"

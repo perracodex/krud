@@ -9,7 +9,7 @@ import krud.access.domain.rbac.repository.field.IRbacFieldRuleRepository
 import krud.database.schema.admin.rbac.RbacScopeRuleTable
 import krud.database.schema.admin.rbac.type.RbacScope
 import org.jetbrains.exposed.v1.core.ResultRow
-import org.jetbrains.exposed.v1.core.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.core.statements.BatchInsertStatement
 import org.jetbrains.exposed.v1.jdbc.*
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction

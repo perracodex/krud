@@ -63,7 +63,7 @@ class PaginationTest : KoinComponent {
             val totalRecords = 10
 
             // No records.
-            employeeService.findAll(pageable = Pageable(page = 0, size = totalRecords)).also { page ->
+            employeeService.findAll(pageable = Pageable(page = 0, position = null, size = totalRecords)).also { page ->
                 assertEquals(
                     expected = 0,
                     actual = page.details.totalPages,
@@ -131,7 +131,7 @@ class PaginationTest : KoinComponent {
             }
 
             // 1 Page
-            employeeService.findAll(pageable = Pageable(page = 0, size = 0)).also { page ->
+            employeeService.findAll(pageable = Pageable(page = 0, position = null, size = 0)).also { page ->
                 assertEquals(
                     expected = 1,
                     actual = page.details.totalPages,
@@ -181,7 +181,7 @@ class PaginationTest : KoinComponent {
 
             // 2 pages.
             val halfPageCount: Int = totalRecords / 2
-            employeeService.findAll(pageable = Pageable(page = 1, size = halfPageCount)).also { page ->
+            employeeService.findAll(pageable = Pageable(page = 1, position = null, size = halfPageCount)).also { page ->
                 assertEquals(
                     expected = 2,
                     actual = page.details.totalPages,
@@ -267,7 +267,7 @@ class PaginationTest : KoinComponent {
             val elementsPerPage = 5
 
             (0..2).forEach { pageIndex ->
-                employeeService.findAll(pageable = Pageable(page = pageIndex, size = elementsPerPage)).also { page ->
+                employeeService.findAll(pageable = Pageable(page = pageIndex, position = null, size = elementsPerPage)).also { page ->
                     assertEquals(
                         expected = 3,
                         actual = page.details.totalPages,
@@ -455,7 +455,7 @@ class PaginationTest : KoinComponent {
                 val pageSize: Int = Random.nextInt(from = 1, until = 50)
                 val pageIndex: Int = Random.nextInt(from = 0, until = (totalRecords / pageSize))
 
-                employeeService.findAll(pageable = Pageable(page = pageIndex, size = pageSize)).also { page ->
+                employeeService.findAll(pageable = Pageable(page = pageIndex, position = null, size = pageSize)).also { page ->
                     val expectedTotalPages: Int = (totalRecords + pageSize - 1) / pageSize // Calculate expected total pages.
                     val startIndex: Int = pageIndex * pageSize // Calculate the start index of the records for the current page.
 
@@ -541,6 +541,7 @@ class PaginationTest : KoinComponent {
                 val pageable = Pageable(
                     page = pageIndex,
                     size = pageSize,
+                    position = null,
                     sort = listOf(Pageable.PageSort(field = sortField, direction = sortOrder))
                 )
 
