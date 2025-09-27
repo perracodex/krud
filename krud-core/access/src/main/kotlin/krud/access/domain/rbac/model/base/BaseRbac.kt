@@ -103,8 +103,10 @@ public abstract class BaseRbac {
                 val nestedInstance: BaseRbac? = property.get(this as T) as? BaseRbac
                 val newFields: List<String>? = nestedFields[property.name]?.map { it.substringAfter(delimiter = '.') }
 
-                return@associateWith nestedInstance?.internalAnonymize(fields = newFields, clazz = nestedInstance::class)
-                    ?: property.get(this) // If nested instance is null, keep original value.
+                return@associateWith nestedInstance?.internalAnonymize(
+                    fields = newFields,
+                    clazz = nestedInstance::class
+                ) ?: property.get(this) // If nested instance is null, keep original value.
             } else {
                 return@associateWith property.get(this as T)
             }
