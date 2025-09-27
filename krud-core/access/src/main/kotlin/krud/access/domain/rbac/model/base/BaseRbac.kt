@@ -91,24 +91,23 @@ public abstract class BaseRbac {
             // Find the corresponding property for each constructor parameter.
             val property: KProperty1<T, *>? = clazz.memberProperties.firstOrNull { it.name == parameter.name }
 
-            property?.let {
-                if (property.name in topLevelFields) {
-                    // Anonymize top-level fields directly.
-                    return@associateWith RbacFieldAnonymization.anonymize(value = property.get(this as T))
-                } else {
-                    // Handle nested fields: find the nested class and recursively anonymize it.
-                    val nestedPropertyName = property.name
+            if (property == null) {
+                // Return null for non-existent properties. Unlikely with well-formed data.
+                return@associateWith null
+            } else if (property.name in topLevelFields) {
+                // Anonymize top-level fields directly.
+                return@associateWith RbacFieldAnonymization.anonymize(value = property.get(this as T))
+            } else if (property.name in nestedFields.keys) {
+                // Handle nested fields: find the nested class and recursively anonymize it.
 
-                    if (nestedPropertyName in nestedFields.keys) {
-                        val nestedInstance: BaseRbac? = property.get(this as T) as? BaseRbac
-                        val newFields: List<String>? = nestedFields[nestedPropertyName]?.map { it.substringAfter(delimiter = '.') }
-                        return@associateWith nestedInstance?.internalAnonymize(newFields, nestedInstance::class) ?: property.get(this)
-                    } else {
-                        // If not a nested field or no anonymization needed, keep the original value.
-                        return@associateWith property.get(this as T)
-                    }
-                }
-            } ?: return@associateWith null // Return null for non-existent properties. Unlikely with well-formed data.
+                val nestedInstance: BaseRbac? = property.get(this as T) as? BaseRbac
+                val newFields: List<String>? = nestedFields[property.name]?.map { it.substringAfter(delimiter = '.') }
+
+                return@associateWith nestedInstance?.internalAnonymize(newFields, clazz = nestedInstance::class)
+                    ?: property.get(this) // If nested instance is null, keep original value.
+            } else {
+                return@associateWith property.get(this as T)
+            }
         }
 
         // Construct and return the new instance of the class with anonymized fields.
