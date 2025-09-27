@@ -4,12 +4,12 @@
 
 package krud.base.security.snowflake
 
-import kotlin.time.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import krud.base.env.Tracer
 import kotlin.time.Duration.Companion.nanoseconds
+import kotlin.time.Instant
 
 /**
  * Generates unique identifiers suitable for distributed systems based

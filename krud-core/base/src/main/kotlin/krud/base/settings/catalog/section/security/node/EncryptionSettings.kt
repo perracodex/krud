@@ -4,6 +4,7 @@
 
 package krud.base.settings.catalog.section.security.node
 
+import kotlinx.serialization.Serializable
 import krud.base.settings.catalog.section.security.SecuritySettings
 
 /**
@@ -12,6 +13,7 @@ import krud.base.settings.catalog.section.security.SecuritySettings
  * @property atRest Settings related to encryption at rest.
  * @property atTransit Settings related to encryption in transit.
  */
+@Serializable
 public data class EncryptionSettings internal constructor(
     val atRest: Spec,
     val atTransit: Spec
@@ -25,6 +27,7 @@ public data class EncryptionSettings internal constructor(
      * @property key Secret key for encrypting/decrypting data.
      * @property sign Signature key to sign the encrypted data.
      */
+    @Serializable
     public data class Spec internal constructor(
         val algorithm: String,
         val salt: String,

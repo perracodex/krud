@@ -4,6 +4,7 @@
 
 package krud.base.settings.catalog.section.security.node.auth
 
+import kotlinx.serialization.Serializable
 import krud.base.settings.catalog.section.security.SecuritySettings
 
 /**
@@ -16,6 +17,7 @@ import krud.base.settings.catalog.section.security.SecuritySettings
  * @property realm Security realm for the JWT authentication.
  * @property secretKey Secret key for signing the JWT.
  */
+@Serializable
 public data class JwtAuthSettings internal constructor(
     val providerName: String,
     val tokenLifetimeSec: Long,

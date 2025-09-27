@@ -5,6 +5,7 @@
 package krud.base.test
 
 import io.ktor.server.config.*
+import io.ktor.server.testing.*
 import krud.base.settings.AppSettings
 import org.koin.core.context.GlobalContext
 import org.koin.core.context.stopKoin
@@ -20,9 +21,14 @@ public object TestUtils {
      * Loads the application settings for testing.
      */
     public fun loadSettings() {
-        val testConfig = ApplicationConfig(configPath = "application.conf")
-
-        AppSettings.load(applicationConfig = testConfig)
+        testApplication {
+            environment {
+                config = ApplicationConfig(configPath = "application.conf")
+            }
+            application {
+                AppSettings.load(this)
+            }
+        }
     }
 
     /**

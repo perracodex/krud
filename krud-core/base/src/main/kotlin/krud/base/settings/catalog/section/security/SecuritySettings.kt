@@ -4,6 +4,7 @@
 
 package krud.base.settings.catalog.section.security
 
+import kotlinx.serialization.Serializable
 import krud.base.settings.catalog.section.security.node.ConstraintsSettings
 import krud.base.settings.catalog.section.security.node.EncryptionSettings
 import krud.base.settings.catalog.section.security.node.RbacSettings
@@ -23,6 +24,7 @@ import krud.base.settings.catalog.section.security.node.auth.OAuthSettings
  * @property oAuth Settings related to OAuth authentication, such as the client id and secret.
  * @property rbac Settings related to RBAC authentication.
  */
+@Serializable
 public data class SecuritySettings internal constructor(
     val isEnabled: Boolean,
     val useSecureConnection: Boolean,

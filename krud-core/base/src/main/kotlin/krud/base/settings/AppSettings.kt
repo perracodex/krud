@@ -4,8 +4,7 @@
 
 package krud.base.settings
 
-import io.github.perracodex.ktor.config.ConfigCatalogMap
-import io.github.perracodex.ktor.config.ConfigurationParser
+import io.ktor.server.application.*
 import io.ktor.server.config.*
 import kotlinx.coroutines.runBlocking
 import krud.base.env.Tracer
@@ -103,9 +102,9 @@ public object AppSettings {
      * are loaded synchronously before proceeding with any further application initialization.
      * The use of [runBlocking] is appropriate here due to its one-time execution at startup.
      *
-     * @param applicationConfig The [ApplicationConfig] instance from which the settings are loaded.
+     * @param application The [Application] instance from which the settings are loaded.
      */
-    public fun load(applicationConfig: ApplicationConfig) {
+    public fun load(application: Application) {
         if (AppSettings::configuration.isInitialized) {
             return
         }
@@ -113,28 +112,19 @@ public object AppSettings {
         tracer.info("Loading application settings.")
 
         val timeTaken: Long = measureTimeMillis {
-            // List defining the mappings between configuration file sections and properties within ConfigurationCatalog.
-            // Each entry in the list consists of three components:
-            // 1. keyPath: The hierarchical key-path in the configuration file from which to parse, (e.g., `"ktor.deployment"`).
-            // 2. catalogProperty: The property name in the [IConfigCatalog] implementation.
-            // 3. propertyClass: The catalogProperty class to instantiate.
-            val catalogMappings: List<ConfigCatalogMap> = listOf(
-                ConfigCatalogMap(keyPath = "apiSchema", catalogProperty = "apiSchema", propertyClass = ApiSchemaSettings::class),
-                ConfigCatalogMap(keyPath = "cors", catalogProperty = "cors", propertyClass = CorsSettings::class),
-                ConfigCatalogMap(keyPath = "database", catalogProperty = "database", propertyClass = DatabaseSettings::class),
-                ConfigCatalogMap(keyPath = "ktor.deployment", catalogProperty = "deployment", propertyClass = DeploymentSettings::class),
-                ConfigCatalogMap(keyPath = "runtime", catalogProperty = "runtime", propertyClass = RuntimeSettings::class),
-                ConfigCatalogMap(keyPath = "security", catalogProperty = "security", propertyClass = SecuritySettings::class)
-            )
-
             // Since the configuration is loaded only once, it is safe to use runBlocking here,
             // which should happen only during application startup. The parsing is through a
             // suspend function, as the configuration sections are parsed asynchronously in parallel.
             runBlocking {
-                configuration = ConfigurationParser.parse(
-                    configuration = applicationConfig,
-                    catalogClass = ConfigurationCatalog::class,
-                    catalogMappings = catalogMappings
+                configuration = ConfigurationCatalog(
+                    apiSchema = application.property<ApiSchemaSettings>(key = "apiSchema"),
+                    cors = application.property<CorsSettings>(key = "cors"),
+                    database = application.property<DatabaseSettings>(key = "database"),
+                    deployment = application.property<DeploymentSettings>(key = "ktor.deployment"),
+                    runtime = application.property<RuntimeSettings>(key = "runtime").copy(
+                        developmentMode = application.developmentMode
+                    ),
+                    security = application.property<SecuritySettings>(key = "security")
                 )
             }
         }

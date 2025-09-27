@@ -34,8 +34,3 @@ include("krud-server")
 //    }
 // }
 
-// includeBuild("../KtorConfig") {
-//    dependencySubstitution {
-//        substitute(module("io.github.perracodex:ktor-config")).using(project(":"))
-//    }
-// }

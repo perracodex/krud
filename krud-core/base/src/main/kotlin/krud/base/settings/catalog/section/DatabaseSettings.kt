@@ -4,6 +4,7 @@
 
 package krud.base.settings.catalog.section
 
+import kotlinx.serialization.Serializable
 import krud.base.env.EnvironmentType
 
 /**
@@ -25,6 +26,7 @@ import krud.base.env.EnvironmentType
  * @property username Optional database username.
  * @property password Optional database password.
  */
+@Serializable
 public data class DatabaseSettings internal constructor(
     val name: String,
     val path: String,

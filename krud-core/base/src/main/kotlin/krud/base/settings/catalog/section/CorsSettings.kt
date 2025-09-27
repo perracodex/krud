@@ -4,6 +4,8 @@
 
 package krud.base.settings.catalog.section
 
+import kotlinx.serialization.Serializable
+
 /**
  * Contains settings related to CORS.
  *
@@ -22,6 +24,7 @@ package krud.base.settings.catalog.section
  *
  * @property allowedHosts The list of allowed hosts used in CORS.
  */
+@Serializable
 public data class CorsSettings internal constructor(
     val allowedHosts: List<String>
 ) {

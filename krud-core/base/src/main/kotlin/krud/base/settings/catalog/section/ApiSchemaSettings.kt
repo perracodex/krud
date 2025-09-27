@@ -4,6 +4,7 @@
 
 package krud.base.settings.catalog.section
 
+import kotlinx.serialization.Serializable
 import krud.base.env.EnvironmentType
 
 /**
@@ -15,6 +16,7 @@ import krud.base.env.EnvironmentType
  * @property swaggerEndpoint The endpoint to the Swagger UI.
  * @property redocEndpoint The endpoint path to the Redoc UI.
  */
+@Serializable
 public data class ApiSchemaSettings internal constructor(
     val environments: List<EnvironmentType>,
     val schemaRoot: String,

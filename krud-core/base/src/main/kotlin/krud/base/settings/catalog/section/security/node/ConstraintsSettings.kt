@@ -13,6 +13,7 @@ import kotlinx.serialization.Serializable
  * @property privateApi Rate limit specification for the Private API endpoints.
  * @property newToken Rate limit specification for the New Authentication Token generation endpoint.
  */
+@Serializable
 public data class ConstraintsSettings internal constructor(
     val publicApi: LimitSpec,
     val privateApi: LimitSpec,

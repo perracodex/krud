@@ -46,7 +46,7 @@ public fun main(args: Array<String>) {
  */
 internal fun Application.krudModule() {
 
-    AppSettings.load(applicationConfig = environment.config)
+    AppSettings.load(application = this)
 
     configureKoin()
 

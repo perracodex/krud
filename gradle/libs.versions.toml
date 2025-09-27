@@ -19,7 +19,6 @@ kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.7.1"
 kotlinx-serialization = "1.9.0"
 ktor = "3.3.0"
-ktor-config = "1.0.7"
 logback = "1.5.18"
 micrometer-prometheus = "1.15.4"
 mockk = "1.14.5"
@@ -137,11 +136,6 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 # https://github.com/Kotlin/kotlinx.serialization
 # https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/serialization-guide.md
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-
-# Ktor Configurations Mapping.
-# https://github.com/perracodex/ktor-config/releases
-# https://github.com/perracodex/ktor-config
-ktor-config = { module = "io.github.perracodex:ktor-config", version.ref = "ktor-config" }
 
 # Ktor.
 # https://github.com/ktorio/ktor/releases
