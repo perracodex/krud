@@ -75,6 +75,7 @@ exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = 
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed" }
 exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
+exposed-r2dbc = { module = "org.jetbrains.exposed:exposed-r2dbc", version.ref = "exposed" }
 
 # Exposed Pagination.
 # https://github.com/perracodex/exposed-pagination/releases

@@ -23,7 +23,7 @@ import krud.domain.employee.model.EmployeeRequest
 import krud.domain.employee.repository.IEmployeeRepository
 import krud.domain.employee.service.EmployeeService
 import krud.domain.employee.test.EmployeeTestUtils
-import org.jetbrains.exposed.v1.jdbc.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.v1.r2dbc.transactions.suspendTransaction
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
@@ -117,7 +117,7 @@ class EmployeeServiceTest : KoinComponent {
     fun testCreateUpdateEmployee(): Unit = testSuspend {
         val employeeRequest: EmployeeRequest = EmployeeTestUtils.newEmployeeRequest()
 
-        newSuspendedTransaction {
+        suspendTransaction {
             val sessionContext: SessionContext = mockk<SessionContext>()
 
             val employeeService: EmployeeService by inject(

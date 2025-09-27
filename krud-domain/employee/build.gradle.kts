@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
     implementation(libs.exposed.pagination)
+    implementation(libs.exposed.r2dbc)
 
     implementation(libs.koin.ktor)
     implementation(libs.koin.logger.slf4j)
