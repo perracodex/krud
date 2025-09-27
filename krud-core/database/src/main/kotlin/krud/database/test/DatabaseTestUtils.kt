@@ -4,7 +4,6 @@
 
 package krud.database.test
 
-import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import krud.base.settings.AppSettings
 import krud.base.util.DateTimeUtils.current
@@ -15,6 +14,7 @@ import krud.database.schema.employment.EmploymentTable
 import krud.database.service.DatabaseService
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.random.Random
+import kotlin.time.Instant
 
 /**
  * Common utilities for unit testing.
@@ -74,7 +74,8 @@ public object DatabaseTestUtils {
         val isActive: Boolean = Random.nextInt(from = 0, until = 100) < 80
 
         val endDate: LocalDate? = if (!isActive) {
-            LocalDate(year = startYear + Random.nextInt(from = 1, until = 5),
+            LocalDate(
+                year = startYear + Random.nextInt(from = 1, until = 5),
                 month = Random.nextInt(from = 1, until = 13),
                 day = Random.nextInt(from = 1, until = 29)
             )

@@ -13,8 +13,10 @@ import krud.database.schema.base.PeriodTable
 import krud.database.schema.employee.EmployeeTable
 import krud.database.schema.employment.type.EmploymentStatus
 import krud.database.schema.employment.type.WorkModality
-import org.jetbrains.exposed.v1.crypt.*
-import org.jetbrains.exposed.v1.core.*
+import org.jetbrains.exposed.v1.core.Column
+import org.jetbrains.exposed.v1.core.ReferenceOption
+import org.jetbrains.exposed.v1.crypt.Encryptor
+import org.jetbrains.exposed.v1.crypt.encryptedVarchar
 import org.jetbrains.exposed.v1.datetime.date
 import kotlin.uuid.Uuid
 

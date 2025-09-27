@@ -4,12 +4,12 @@
 
 package krud.database.model
 
-import kotlin.time.Instant
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import krud.database.schema.base.BaseTable
 import krud.database.schema.base.TimestampedTable
 import org.jetbrains.exposed.v1.core.ResultRow
+import kotlin.time.Instant
 import kotlin.uuid.Uuid
 
 /**

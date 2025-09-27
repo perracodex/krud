@@ -5,7 +5,6 @@
 package krud.server.health.check
 
 import io.ktor.server.application.*
-import kotlin.time.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
@@ -13,6 +12,7 @@ import krud.base.env.EnvironmentType
 import krud.base.env.HealthCheckApi
 import krud.base.settings.catalog.section.RuntimeSettings
 import krud.base.util.DateTimeUtils.current
+import kotlin.time.Instant
 
 /**
  * Used to check the runtime configuration of the application.

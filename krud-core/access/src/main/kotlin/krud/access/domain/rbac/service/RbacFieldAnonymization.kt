@@ -35,7 +35,7 @@ public object RbacFieldAnonymization {
     private const val ANONYMIZED_LONG: Long = Long.MIN_VALUE
     private const val ANONYMIZED_DOUBLE: Double = Double.MIN_VALUE
     private const val ANONYMIZED_FLOAT: Float = Float.MIN_VALUE
-    private val ANONYMIZED_DATE: LocalDate = LocalDate(year = 1900, monthNumber = 1, dayOfMonth = 1)
+    private val ANONYMIZED_DATE: LocalDate = LocalDate(year = 1900, month = 1, day = 1)
     private val ANONYMIZED_TIME: LocalTime = LocalTime(hour = 0, minute = 0, second = 0, nanosecond = 0)
     private val ANONYMIZED_DATE_TIME: LocalDateTime = LocalDateTime(date = ANONYMIZED_DATE, time = ANONYMIZED_TIME)
 

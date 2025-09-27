@@ -104,10 +104,10 @@ class BaseRbacTest {
 
         val instance = TestClass(
             id = 1,
-            date = LocalDate(year = 2021, monthNumber = 1, dayOfMonth = 1),
+            date = LocalDate(year = 2021, month = 1, day = 1),
             time = LocalTime(hour = 12, minute = 0, second = 0, nanosecond = 0),
             dateTime = LocalDateTime(
-                date = LocalDate(year = 2021, monthNumber = 1, dayOfMonth = 1),
+                date = LocalDate(year = 2021, month = 1, day = 1),
                 time = LocalTime(hour = 12, minute = 0, second = 0, nanosecond = 0)
             )
         )

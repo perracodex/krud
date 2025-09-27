@@ -4,7 +4,6 @@
 
 import io.ktor.test.dispatcher.*
 import io.mockk.mockk
-import kotlin.time.Instant
 import krud.base.context.SessionContext
 import krud.base.test.TestUtils
 import krud.database.test.DatabaseTestUtils
@@ -17,6 +16,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 import kotlin.test.*
+import kotlin.time.Instant
 
 class TimestampTest : KoinComponent {
 
