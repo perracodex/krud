@@ -37,7 +37,20 @@ public object AsyncScope {
     /**
      * The coroutine scope used for launching the action processing coroutine.
      */
-    private val scope: CoroutineScope = CoroutineScope(context = SupervisorJob() + Dispatchers.Default)
+    private var scope: CoroutineScope = CoroutineScope(context = SupervisorJob() + Dispatchers.Default)
+
+    /**
+     * Sets the scope to be used for coroutine operations,
+     * allowing to override the internal default one.
+     *
+     * Useful to tie the scope to a concrete lifecycle, such as an application
+     * or a specific component, ensuring proper cancellation and resource management.
+     *
+     * @param scope The coroutine scope to assign.
+     */
+    public fun setScope(scope: CoroutineScope) {
+        this.scope = scope
+    }
 
     /**
      * The channel that holds the suspending actions to be executed sequentially if needed.
@@ -83,7 +96,7 @@ public object AsyncScope {
             // Sequential execution: Send the action to the task channel.
             scope.launch {
                 try {
-                    taskChannel.send(action)
+                    taskChannel.send(element = action)
                 } catch (e: ClosedSendChannelException) {
                     tracer.error(message = "Async action channel is closed.", cause = e)
                 }

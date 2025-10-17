@@ -41,7 +41,7 @@ public object SseService {
     internal val eventFlow: Flow<String> = _eventFlow
 
     /**
-     * Pushes a new event message to the event flow,
+     * Pushes a new event message to the event flow
      * so that all active subscribers receive the message.
      *
      * @param message The message to push to the event flow.
