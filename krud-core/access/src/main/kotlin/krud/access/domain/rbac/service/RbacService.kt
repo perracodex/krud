@@ -65,7 +65,7 @@ internal class RbacService(
      * Refreshes the permissions cache for the given actor, ensuring the service reflects
      * the latest system permissions.
      *
-     * If the actor has no scope rules, for example a superuser, it will be removed from
+     * If the actor has no scope rules, for example, a superuser, it will be removed from
      * the cache if previously cached.
      *
      * @param actorId The id of the Actor to refresh.
@@ -203,7 +203,7 @@ internal class RbacService(
     /**
      * Retrieves the [RbacRole] for the given [actorId].
      *
-     * @param actorId The id of the actor to which the role is associated.
+     * @param actorId The id of the actor with which the role is associated.
      * @return The [RbacRole] for the given [actorId], or null if it doesn't exist.
      */
     suspend fun findRoleByActorId(actorId: Uuid): RbacRole? = withContext(Dispatchers.IO) {
@@ -213,7 +213,7 @@ internal class RbacService(
     /**
      * Retrieves a cached [Actor] for the given [actorId].
      *
-     * No database queries are performed, unless the cache is empty,
+     * No database queries are performed unless the cache is empty,
      * in which case it will be refreshed before attempting to find the actor.
      *
      * @param actorId The Actor ID to find.
@@ -229,7 +229,7 @@ internal class RbacService(
     /**
      * Retrieves the cached [Actor] for the given [username].
      *
-     * No database queries are performed, unless the cache is empty,
+     * No database queries are performed unless the cache is empty,
      * in which case it will be refreshed before attempting to find the actor.
      *
      * @param username The username of the actor to find.
@@ -265,7 +265,7 @@ internal class RbacService(
 
     /**
      * Updates an existing role for the given [roleId].
-     * The current existing roles will be replaced by the new ones.
+     * The new ones will replace the current existing roles.
      *
      * @param roleId The id of the role to update.
      * @param roleRequest The [RbacRoleRequest] to update the role from.

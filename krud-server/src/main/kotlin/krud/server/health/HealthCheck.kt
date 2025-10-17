@@ -56,13 +56,13 @@ public data class HealthCheck private constructor(
     internal companion object {
         /**
          * Creates a new [HealthCheck] instance.
-         * We need to use a suspendable factory method as some of the checks have suspending functions.
+         * We need to use a suspendable factory method as some checks have suspending functions.
          */
         suspend fun create(call: ApplicationCall): HealthCheck {
             return HealthCheck(
                 health = mutableListOf(),
                 application = ApplicationHealth(),
-                deployment = DeploymentHealth.Companion.create(call = call),
+                deployment = DeploymentHealth.create(call = call),
                 runtime = RuntimeHealth(call = call, settings = AppSettings.runtime),
                 security = SecurityHealth(),
                 snowflake = SnowflakeHealth(),

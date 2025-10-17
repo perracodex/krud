@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 /**
  * Composite exception to aggregate multiple [AppException] instances
  * into a single exception, facilitating the handling and reporting of various errors.
- * Useful for scenarios requiring multiple validations, or when multiple errors need
+ * Useful for scenarios requiring multiple validations or when multiple errors need
  * to be reported simultaneously.
  *
  * @property errors A list of [AppException] instances, each representing an individual error.

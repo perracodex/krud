@@ -26,7 +26,7 @@ public object SnowflakeFactory {
 
     /**
      * The base used for converting the generated ID to a compact alphanumeric string.
-     * For example, 12345 in Base 36 might be represented as '9ix' in alphanumeric.
+     * For example, `12345`"` in Base 36 might be represented as `9ix` in alphanumeric.
      * Note: The base must be a value between 2 and 36, inclusive, as per the limitations
      * of Kotlin's toString(radix) function used for this conversion.
      */
@@ -39,25 +39,25 @@ public object SnowflakeFactory {
 
     /**
      * Number of bits allocated for the machine ID within the 64-bit Snowflake ID.
-     * Minimum 1 bit for at least 2 unique IDs. 10 bits allows 2^10 = 1,024 IDs.
+     * Minimum 1 bit for at least 2 unique IDs. 10 bits allow 2^10 = 1,024 IDs.
      */
     private const val MACHINE_ID_BITS: Int = 10
 
     /**
      * Maximum possible value for machine ID, derived from the number of bits allocated.
-     * This value is 2^MACHINE_ID_BITS - 1.
+     * This value is `2^MACHINE_ID_BITS - 1`.
      */
     private const val MAX_MACHINE_ID: Long = (1 shl MACHINE_ID_BITS) - 1L
 
     /**
      * Number of bits for the sequence number, part of the 64-bit limit.
-     * Minimum 1 bit for 2 IDs per millisecond. 12 bits allows 2^12 = 4,096 IDs per millisecond.
+     * Minimum 1 bit for 2 IDs per millisecond. 12 bits allow 2^12 = 4,096 IDs per millisecond.
      */
     private const val SEQUENCE_BITS: Int = 12
 
     /**
      * Maximum possible value for the sequence number, based on the allocated bits.
-     * Equals 2^SEQUENCE_BITS - 1, ensuring a unique ID sequence within a millisecond.
+     * Equals `2^SEQUENCE_BITS - 1`, ensuring a unique ID sequence within a millisecond.
      */
     private const val MAX_SEQUENCE: Long = (1 shl SEQUENCE_BITS) - 1L
 
@@ -83,7 +83,7 @@ public object SnowflakeFactory {
 
     /**
      * Wall-clock reference time set at SnowflakeFactory initialization.
-     * Utilized in `newTimestamp()` to compute stable millisecond timestamps,
+     * Used in `newTimestamp()` to compute stable millisecond timestamps,
      * combining with elapsed time since initialization for adjustment-resilient values.
      */
     public val timestampEpoch: Long = System.currentTimeMillis()
@@ -134,8 +134,8 @@ public object SnowflakeFactory {
             sequence = 0L
             lastTimestampMs = currentTimestampMs
         } else {
-            // If the current timestamp is the same, increment the sequence number.
-            // If sequence overflows, wait for the next millisecond.
+            // If the current timestamp is the same, increase the sequence number.
+            // If the sequence overflows, wait for the next millisecond.
             if (++sequence > MAX_SEQUENCE) {
                 sequence = 0L
                 do {

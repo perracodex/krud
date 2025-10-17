@@ -26,7 +26,7 @@ internal interface IRbacRoleRepository {
     /**
      * Finds the [RbacRole] for the given [actorId].
      *
-     * @param actorId The id of the actor to which the role is associated.
+     * @param actorId The id of the actor with which the role is associated.
      * @return The [RbacRole] for the given [actorId], or null if it doesn't exist.
      */
     fun findByActorId(actorId: Uuid): RbacRole?
@@ -49,7 +49,7 @@ internal interface IRbacRoleRepository {
     /**
      * Updates an existing [RbacRole] for the given [roleId].
      *
-     * The current existing roles will be replaced by the new ones.
+     * The new ones will replace the current existing roles.
      *
      * @param roleId The id of the [RbacRole] to update.
      * @param roleRequest The [RbacRoleRequest] to update the [RbacRole] from.

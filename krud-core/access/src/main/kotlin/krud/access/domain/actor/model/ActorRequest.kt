@@ -8,7 +8,7 @@ import kotlin.uuid.Uuid
 
 /**
  * Request to create/update an Actor.
- * An Actor is a user with specific role and designated access to a set of concrete scopes.
+ * An Actor is a user with a specific role and designated access to a set of concrete scopes.
  *
  * #### Locked State
  * The [isLocked] flag represents whether an Actor is currently locked out of the system, suspending all

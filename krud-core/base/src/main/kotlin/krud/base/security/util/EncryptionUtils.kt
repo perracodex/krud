@@ -32,7 +32,7 @@ public object EncryptionUtils {
 
     /**
      * Get the [Encryptor] based on the encryption configuration settings.
-     * Used for example to encrypt database fields.
+     * Used, for example, to encrypt database fields.
      *
      * @param type The target [EncryptionUtils.Type] of encryption to use.
      */

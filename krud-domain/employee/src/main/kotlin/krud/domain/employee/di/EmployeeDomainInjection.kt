@@ -26,9 +26,9 @@ public object EmployeeDomainInjection {
      */
     public fun get(): Module {
         return module {
-            // Scoped definitions within RequestScope for single request lifecycle.
-            // Services receive the SessionContext as a parameter. Repositories,
-            // which should only be accessed by services, do not receive it directly.
+            // Scoped definitions within RequestScope for a single request lifecycle.
+            // Services receive the SessionContext as a parameter. Repositories
+            // which should only be accessed by "services" do not receive it directly.
 
             scope<RequestScope> {
                 scopedOf(::ContactRepository) {

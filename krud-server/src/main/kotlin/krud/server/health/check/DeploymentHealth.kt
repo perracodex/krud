@@ -51,7 +51,7 @@ public data class DeploymentHealth private constructor(
      * Contains the deployment settings.
      *
      * @property protocol The network protocol used by the application, such as "http" or "https".
-     * @property port The network port the server listens on.
+     * @property port The network port the server listens to on.
      * @property sslPort The network port the server listens on for secure connections.
      * @property host The network address the server is bound to.
      * @property allowedHosts The list of allowed hosts configured in CORS.

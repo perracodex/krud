@@ -96,7 +96,7 @@ public object EmailValidator : IValidator<String> {
             )
         }
 
-        // Ensure domain part does not have consecutive dots.
+        // Ensure the domain part does not have consecutive dots.
         if (domainPart.contains(other = "..")) {
             return Result.failure(
                 ValidationException(
@@ -106,7 +106,7 @@ public object EmailValidator : IValidator<String> {
             )
         }
 
-        // Check if the local part starts or ends with a dot, or contains consecutive dots.
+        // Check if the local part starts or ends with a dot or contains consecutive dots.
         if (localPart.startsWith(prefix = ".") || localPart.endsWith(suffix = ".") || localPart.contains(other = "..")) {
             return Result.failure(
                 ValidationException(

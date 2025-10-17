@@ -22,7 +22,7 @@ import java.nio.file.Paths
 
 /**
  * Manages database configurations and provides utility methods for database maintenance,
- * serving as a centralized point for setting up database connections, and other
+ * serving as a centralized point for setting up database connections and other
  * database-related configurations.
  *
  * #### References
@@ -163,7 +163,7 @@ internal object DatabaseService {
      * by running the migration scripts found in the default locations.
      *
      * Note that this should never be part of the server execution.
-     * Instead, should be decoupled and be executed as a completely independent maintenance step.
+     * Instead, it should be decoupled and be executed as a completely independent maintenance step.
      * It is added here just as an example to show how to use Flyway.
      *
      * It is assumed that the migration scripts are located in the `db/migration`

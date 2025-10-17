@@ -12,7 +12,7 @@ import krud.domain.employment.di.EmploymentDomainInjection
 import org.koin.ktor.plugin.Koin
 
 /**
- * Sets up and initializes dependency injection using the Koin framework,
+ * Sets up and initializes dependency injection using the Koin framework.
  *
  * #### References
  * - [Koin for Ktor Documentation](https://insert-koin.io/docs/quickstart/ktor)

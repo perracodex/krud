@@ -123,7 +123,7 @@ public data class DatabaseHealth private constructor(
      * @property threadsAwaitingConnection The number of threads awaiting connection.
      * @property connectionTimeout The maximum number of milliseconds that a client will wait for a connection from the pool, (ms).
      * @property maxLifetime The maximum connection lifetime, (ms).
-     * @property keepaliveTime The interval in which connections is tested for aliveness, (ms).
+     * @property keepaliveTime The interval in which connections are tested for aliveness, (ms).
      * @property maxPoolSize Maximum number of connections kept in the pool, including both idle and in-use connections.
      */
     @Serializable

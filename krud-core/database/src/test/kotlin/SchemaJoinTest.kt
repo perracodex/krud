@@ -60,7 +60,7 @@ class SchemaJoinTest {
             }
 
             schemas.forEachIndexed { index, schema ->
-                // Change to any random schema to test that no matter the current schema
+                // Change to any random schema to test that no matter the current schema,
                 // the public schema is correctly set.
                 SchemaUtils.setSchema(Schema(name = schemas.random()))
 
@@ -73,12 +73,12 @@ class SchemaJoinTest {
                 val publicRecords: Long = PublicTable.selectAll().count()
                 assertEquals(expected = index + 1L, actual = publicRecords)
 
-                // Set the current schema, and verify it has no data
+                // Set the current schema and verify it has no data
                 // in the SchemaTable, even though a matching table exists in other schemas.
                 SchemaUtils.setSchema(Schema(name = schema))
                 assertEquals(expected = 0, actual = SchemaTable.selectAll().count())
 
-                // Insert data into SchemaTable in the current schema.
+                // Insert data into the SchemaTable in the current schema.
                 SchemaTable.insert {
                     it[userId] = newUserId
                     it[amount] = 100.toBigDecimal() + (index + 1).toBigDecimal()

@@ -18,7 +18,7 @@ import krud.domain.employee.error.EmployeeError
  * This request serves as example of how to use the [NoBlankString],
  * which is a typealias for a serializable String that cannot be blank.
  *
- * Note that the project also includes examples demonstrating how perform verifications
+ * Note that the project also includes examples demonstrating how to perform verifications
  * at service level or database field level, instead of using serializers.
  * Such validation variants can send to the client a more detailed error than
  * would do a serializer.

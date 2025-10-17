@@ -40,7 +40,7 @@ internal fun Route.rbacDashboardUpdateRoute() {
         val parameters: Parameters = call.receiveParameters()
         val currentRoleId: Uuid = parameters.getOrFail(name = RbacDashboardView.ROLE_KEY).toUuid()
 
-        // Fetch the role-specific scope rules for the current role,
+        // Fetch the role-specific scope rules for the current role
         // and update the rules based on the submitted parameters.
         RbacDashboardManager.processUpdate(
             sessionContext = sessionContext,

@@ -19,7 +19,7 @@ internal object ApplicationsUtils {
     private val tracer: Tracer = Tracer<ApplicationsUtils>()
 
     /**
-     * Perform any additional server configuration that is required for the application to run.
+     * Perform any additional server configuration required for the application to run.
      *
      * @param application The Ktor application instance.
      */

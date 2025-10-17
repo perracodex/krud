@@ -14,7 +14,7 @@ internal object ErrorUtils {
      * relevant for diagnostics.
      *
      * @param cause The initial [Throwable] from which to start extracting the messages.
-     * @return A detailed error message string, comprised of unique messages, up to the predefined limit.
+     * @return A detailed error message string, comprising unique messages, up to the predefined limit.
      */
     fun summarizeCause(cause: Throwable): String {
         // Use a Set to keep track of unique messages.
@@ -26,7 +26,7 @@ internal object ErrorUtils {
 
         // Iterate through the exception chain and collect unique messages until we reach the limit.
         while (uniqueMessages.size < maxMessages && currentCause != null) {
-            // Add message if it is unique.
+            // Add the message if it is unique.
             currentCause.message?.let { message ->
                 uniqueMessages.add(message)
             }
@@ -34,7 +34,7 @@ internal object ErrorUtils {
             currentCause = currentCause.cause
         }
 
-        // Join the collected messages with "Caused by:" if more than one, otherwise return the single message.
+        // Join the collected messages with "Caused by" if more than one, otherwise return the single message.
         return uniqueMessages.joinToString(separator = " Caused by: ")
     }
 }

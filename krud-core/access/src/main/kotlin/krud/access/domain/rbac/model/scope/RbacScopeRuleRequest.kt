@@ -15,7 +15,7 @@ import krud.database.schema.admin.rbac.type.RbacScope
  * Therefore, when updating an RBAC role, all its associated scope rules are deleted and re-created.
  *
  * A scope can be any concept: a database table, a REST endpoint, a UI element, etc.
- * Is up to the designer to define what a scope is, and act accordingly when its
+ * It is up to the designer to define what a scope is and act accordingly when its
  * associated RBAC rule is verified.
  *
  * @property scope The [RbacScope] being targeted.

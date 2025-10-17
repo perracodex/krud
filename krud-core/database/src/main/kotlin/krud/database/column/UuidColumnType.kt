@@ -20,7 +20,7 @@ import kotlin.uuid.toKotlinUuid
  * This class facilitates the use of Kotlin's [Uuid] in the Exposed framework, reducing the need
  * for conversions between Java's UUID and Kotlin's Uuid and streamlining database operations.
  *
- * Note that Exposed framework team has opened a ticket regarding this issue.
+ * Note that `Exposed` framework team has opened a ticket regarding this issue.
  *
  * #### Issues
  * - [EXPOSED-507](https://youtrack.jetbrains.com/issue/EXPOSED-507/Support-kotlin.uuid.Uuid-as-a-column-type)

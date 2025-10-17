@@ -18,8 +18,8 @@ import kotlinx.serialization.Serializable
  * 	 	"somewhere.com|https|"
  * ```
  *
- * If empty list or any of the hosts is '*', then the default is to allow all hosts,
- * in which case schemes and subdomains are ignored even if defined, in addition of
+ * If an empty list or any of the hosts is '*', then the default is to allow all hosts,
+ * in which case schemes and subdomains are ignored even if defined, in addition to
  * any other hosts.
  *
  * @property allowedHosts The list of allowed hosts used in CORS.
@@ -31,8 +31,8 @@ public data class CorsSettings internal constructor(
     /**
      * Represents a single host configuration.
      *
-     * @property host The host, for example "potato.com".
-     * @property schemes The allowed schemes in the host, such as "http" and/or "https".
+     * @property host The host, for example, "potato.com".
+     * @property schemes The allowed schemes in the host, such as `http` and/or `https`.
      * @property subDomains The allowed subdomains, such as "api","admin", etc.
      */
     public data class HostConfig internal constructor(
@@ -55,7 +55,7 @@ public data class CorsSettings internal constructor(
          * The delimiter used to separate the host, schemes, and subdomains.
          *
          * #### Example
-         * "example.com;http,https;api,admin" will be split into 3 sections:
+         * `example.com;http,https;api,admin` will be split into 3 sections:
          * - host: "example.com"
          * - schemes: "http,https"
          * - subdomains: "api,admin"
@@ -66,7 +66,7 @@ public data class CorsSettings internal constructor(
          * The delimiter used to separate multiple values within a section.
          *
          * #### Example
-         * "example.com;http,https;api,admin" will split the schemes and subdomains sections into the values:
+         * `example.com;http,https;api,admin` will split the schemes and subdomains sections into the values:
          * - schemes: "http", "https"
          * - subdomains: "api", "admin"
          */

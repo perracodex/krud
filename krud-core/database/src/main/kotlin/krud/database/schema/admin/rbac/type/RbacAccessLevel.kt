@@ -33,8 +33,8 @@ public enum class RbacAccessLevel(override val id: Int) : IEnumWithId {
      * Determines if the current RBAC access level has sufficient privileges as compared to a required
      * access level, to determine if the current access level encompasses the required permissions.
      *
-     * This could also be compared by the id access level, so the higher the id, the higher the privileges,
-     * but such approach would mean that the ids would have to be sequential, and it would make it
+     * This could also be compared with the id access level, so the higher the id, the higher the privileges.
+     * But such an approach would mean that the ids would have to be sequential, and it would make it
      * not trivial to create isolated concrete levels of access.
      *
      * @param requiredAccessLevel The [RbacAccessLevel] to be compared against the current access level.

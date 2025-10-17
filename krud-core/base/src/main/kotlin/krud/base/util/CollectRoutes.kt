@@ -16,7 +16,7 @@ import kotlinx.serialization.Serializable
 public fun Application.collectRoutes(): List<RouteInfo> {
     val routes: MutableList<RouteInfo> = mutableListOf()
 
-    // Helper function to recursively traverse and collect routes.
+    // A helper function to recursively traverse and collect routes.
     fun RoutingNode.collect() {
         if (this.selector is HttpMethodRouteSelector) {
             val method: String = (this.selector as HttpMethodRouteSelector).method.value

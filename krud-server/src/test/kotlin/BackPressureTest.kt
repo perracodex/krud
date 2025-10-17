@@ -82,7 +82,7 @@ class BackPressureTest : KoinComponent {
                                 assertEquals(HttpStatusCode.Created, writeResponse.status)
                             } else {
                                 if (writtenEmployeeIds.isEmpty()) {
-                                    // If no employees are written yet then using random employeeId for read operations.
+                                    // If no employees are written yet, then using random employeeId for read operations.
                                     // Does not matter if it does not exist.
                                     val employeeId = "9965adab-21ac-4339-8cc0-8a44c2287c95"
                                     val readResponse: HttpResponse = client.get(urlString = "/api/v1/employees/$employeeId") {
@@ -113,7 +113,7 @@ class BackPressureTest : KoinComponent {
                 largestAverageResponseTime = averageResponseTime
             }
 
-            // Check if average response time is within acceptable limits.
+            // Check if the average response time is within acceptable limits.
             assertTrue(message = "Average response time should be below 500ms") { averageResponseTime < 500L }
         }
 
@@ -218,14 +218,14 @@ class BackPressureTest : KoinComponent {
         // Generate the authentication token required for the request call.
         val authToken: String = RbacTestUtils.newAuthenticationToken()
 
-        // Concurrently send write and read requests.
+        // Concurrently, send write and read requests.
         val totalCalls = 10000
         val writtenEmployeeIds = ConcurrentSet<String>()
 
         testSuspend {
             val jobs: List<Deferred<Unit>> = List(size = totalCalls) { index ->
 
-                // Alternate between write and read to simulate concurrent operations.
+                // Alternate between writing and read to simulate concurrent operations.
                 if (index % 2 == 0) {
                     async {
                         // Prepare a unique employee request for write operations.
@@ -251,7 +251,7 @@ class BackPressureTest : KoinComponent {
 
                     async {
                         if (writtenEmployeeIds.isEmpty()) {
-                            // If no employees are written yet then using random employeeId for read operations.
+                            // If no employees are written yet, then using random employeeId for read operations.
                             // Does not matter if it does not exist.
                             val employeeId = "9965adab-21ac-4339-8cc0-8a44c2287c95"
                             val readResponse: HttpResponse = client.get(urlString = "/api/v1/employees/$employeeId") {

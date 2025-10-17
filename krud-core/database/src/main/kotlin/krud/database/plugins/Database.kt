@@ -17,7 +17,7 @@ import krud.database.schema.employment.EmploymentTable
 /**
  * Configures the custom [DbPlugin].
  *
- * This will set up and configure database, including the connection pool, and register
+ * This will set up and configure the database, including the connection pool, and register
  * the database schema tables so that the ORM can interact with them.
  *
  * @see [DbPlugin]

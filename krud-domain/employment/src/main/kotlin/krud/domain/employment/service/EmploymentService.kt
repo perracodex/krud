@@ -35,7 +35,7 @@ public class EmploymentService internal constructor(
     }
 
     /**
-     * Retrieves an employment by its ID.
+     * Retrieves an `employment` by its ID.
      *
      * @param employeeId The ID of the employee associated with the employment.
      * @param employmentId The ID of the employment to be retrieved.
@@ -56,7 +56,7 @@ public class EmploymentService internal constructor(
     }
 
     /**
-     * Creates a new employment.
+     * Creates a new `employment`.
      *
      * @param employeeId The employee ID associated with the employment.
      * @param request The [EmploymentRequest] to be created.
@@ -131,7 +131,7 @@ public class EmploymentService internal constructor(
     }
 
     /**
-     * Deletes an employment using the provided ID.
+     * Deletes an `employment` using the provided ID.
      *
      * @param employmentId The ID of the employment to be deleted.
      * @return The number of delete records.
@@ -142,7 +142,7 @@ public class EmploymentService internal constructor(
     }
 
     /**
-     * Deletes all an employments for the given employee ID.
+     * Deletes all the employments for the given employee ID.
      *
      * @param employeeId The ID of the employee to delete all its employments.
      * @return The number of delete records.

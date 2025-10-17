@@ -24,7 +24,7 @@ internal interface IEmploymentRepository {
     fun findAll(pageable: Pageable? = null): Page<Employment>
 
     /**
-     * Retrieves an employment by its ID.
+     * Retrieves an `employment` by its ID.
      *
      * @param employeeId The ID of the employee associated with the employment.
      * @param employmentId The ID of the employment to be retrieved.
@@ -41,7 +41,7 @@ internal interface IEmploymentRepository {
     fun findByEmployeeId(employeeId: Uuid): List<Employment>
 
     /**
-     * Creates a new employment.
+     * Creates a new `employment`.
      *
      * @param employeeId The employee ID associated with the employment.
      * @param request The [EmploymentRequest] to be created.
@@ -60,7 +60,7 @@ internal interface IEmploymentRepository {
     fun update(employeeId: Uuid, employmentId: Uuid, request: EmploymentRequest): Employment?
 
     /**
-     * Deletes an employment using the provided ID.
+     * Deletes an `employment` using the provided ID.
      *
      * @param employmentId The ID of the employment to be deleted.
      * @return The number of delete records.
@@ -68,7 +68,7 @@ internal interface IEmploymentRepository {
     fun delete(employmentId: Uuid): Int
 
     /**
-     * Deletes all an employments for the given employee ID.
+     * Deletes all the employments for the given employee ID.
      *
      * @param employeeId The ID of the employee to delete all its employments.
      * @return The number of delete records.

@@ -47,14 +47,14 @@ public var ApplicationCall.sessionContext: SessionContext
  *
  * The [SessionContext] is typically set by authentication plugins following successful authorizations.
  *
- * This is useful when must handle missing sessions gracefully (e.g., optional authentication scenarios).
+ * This is useful when we must handle missing sessions gracefully (e.g., optional authentication scenarios).
  *
  * @see [sessionContext]
  * @see [clearSessionContext]
  */
 public val ApplicationCall.sessionContextOrNull: SessionContext?
     get() = this.attributes.getOrNull(key = SessionContextUtils.sessionContextKey)
-        ?: SessionContextUtils.emptySessionContext.takeIf { AppSettings.security.isEnabled == false }
+        ?: SessionContextUtils.emptySessionContext.takeIf { !AppSettings.security.isEnabled }
 
 /**
  * Extension function to clear the [SessionContext] from the [ApplicationCall] attributes and [Sessions].
@@ -77,7 +77,7 @@ private object SessionContextUtils {
     val sessionContextKey: AttributeKey<SessionContext> = AttributeKey(name = "SESSION_CONTEXT")
 
     /**
-     * A default empty [SessionContext] instance. when security is disabled.
+     * A default empty [SessionContext] instance, when security is disabled.
      */
     val emptySessionContext: SessionContext by lazy {
         val uuid: Uuid = "00000000-0000-0000-0000-000000000000".toUuid()

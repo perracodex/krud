@@ -19,13 +19,13 @@ import kotlin.reflect.full.primaryConstructor
  * creating a new instance with certain fields replaced by predefined placeholders.
  *
  * While this class defines the core functionality for anonymization, it still requires concrete
- * implementations to utilize the [anonymize] method to specify which fields should be anonymized.
+ * implementations to use the [anonymize] method to specify which fields should be anonymized.
  *
- * Using placeholders instead of enforcing the target to use null arguments, ensures that
+ * Using placeholders instead of enforcing the target to use null arguments ensures that
  * the anonymized instance remains consistent with its original structure, which is important for
  * serialization and maintains immutability.
  *
- * This class has scope for improvement, such as handling nested classes, and caching the reflection
+ * This class has scope for improvement, such as handling nested classes and caching the reflection
  * results for performance optimization.
  *
  * @see [RbacFieldAnonymization]
@@ -106,7 +106,7 @@ public abstract class BaseRbac {
                 return@associateWith nestedInstance?.internalAnonymize(
                     fields = newFields,
                     clazz = nestedInstance::class
-                ) ?: property.get(this) // If nested instance is null, keep original value.
+                ) ?: property.get(this) // If the nested instance is null, keep the original value.
             } else {
                 return@associateWith property.get(this as T)
             }

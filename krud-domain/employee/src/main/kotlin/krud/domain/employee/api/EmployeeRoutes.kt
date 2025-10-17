@@ -18,7 +18,7 @@ import krud.domain.employee.api.operate.createEmployeeRoute
 import krud.domain.employee.api.operate.updateEmployeeByIdRoute
 
 /**
- * Employee related endpoints.
+ * Employee-related endpoints.
  *
  * #### References
  * - [Application Structure](https://ktor.io/docs/server-application-structure.html) for examples

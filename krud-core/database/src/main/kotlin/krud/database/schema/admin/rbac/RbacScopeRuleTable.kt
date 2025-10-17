@@ -17,7 +17,7 @@ import kotlin.uuid.Uuid
  * Database table definition holding RBAC rules for a concrete [RbacRoleTable] record.
  *
  * A scope can be any concept: a database table, a REST endpoint, a UI element, etc.
- * Is up to the designer to define what a scope is, and act accordingly when its
+ * It is up to the designer to define what a scope is and act accordingly when its
  * associated RBAC rule is verified.
  *
  * @see [RbacRoleTable]

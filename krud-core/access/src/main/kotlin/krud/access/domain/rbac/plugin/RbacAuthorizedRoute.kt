@@ -39,7 +39,7 @@ internal fun Route.rbacAuthorizedRoute(
     val authorizedRoute: Route = createChild(selector = authorizedSelector)
 
     // Install the 'RbacPlugin' on the newly created child route. During this installation, the plugin
-    // is configured with the same RBAC scope and access level that were used to create the route.
+    // is configured with the same RBAC scope and access level used to create the route.
     // This ensures the enforcement of RBAC policies on the route, making certain that access is granted
     // only to actors with the appropriate permissions defined by the scope and access level parameters.
     authorizedRoute.install(plugin = RbacPlugin) {

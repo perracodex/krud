@@ -39,7 +39,7 @@ public object DateTimeUtils {
         /** Format: yyyy-MM-dd, e.g. 2024-04-01 */
         YYYY_MM_DD("yyyy-MM-dd"),
 
-        /** Format: yyyy-MMM-dd, e.g. 2024-APR-01 */
+        /** Format: yyyy-MMM-dd, e.g., 2024-APR-01 */
         YYYY_MMM_DD("yyyy-MMM-dd")
     }
 
@@ -105,7 +105,7 @@ public object DateTimeUtils {
 
         // Extract the desired number of digits for fractional seconds.
         val nanosecond: String = "%09d".format(this.nanosecond)
-        val fractionalPrecision: String = nanosecond.substring(startIndex = 0, endIndex = adjustedPrecision)
+        val fractionalPrecision: String = nanosecond.take(n = adjustedPrecision)
 
         // Assemble the final formatted string
         return "$year-$month-$day$timeDelimiter$hour:$minute:$second.$fractionalPrecision"

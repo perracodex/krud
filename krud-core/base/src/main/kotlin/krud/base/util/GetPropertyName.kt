@@ -12,7 +12,7 @@ import kotlin.reflect.full.findAnnotation
 /**
  * Retrieves the fully qualified name of a property path.
  *
- * Infers the root class from the first property and appends subsequent property names,
+ * Infers the root class from the first property, and appends subsequent property names,
  * respecting any `@SerialName` annotations present on classes or properties.
  *
  * #### Usage
@@ -42,7 +42,7 @@ import kotlin.reflect.full.findAnnotation
  * @return The fully qualified name of the property as a [String], formatted as `"ClassName.property1.property2...propertyN"`.
  *         If `@SerialName` is present on any class or property in the path, the annotated names are used instead.
  *
- * @throws IllegalArgumentException If the property path is invalid or if class/property names cannot be determined.
+ * @throws IllegalArgumentException If the property path is invalid, or if class/property names cannot be determined.
  */
 public fun getPropertyName(
     root: KProperty1<*, *>,
@@ -55,9 +55,9 @@ public fun getPropertyName(
 
     val allProperties: List<KProperty1<*, *>> = listOf(root) + remaining
 
-    val fieldNames: MutableList<String> = mutableListOf<String>()
+    val fieldNames: MutableList<String> = mutableListOf()
 
-    // Get root class serial name.
+    // Get the root class serial name.
     val rootClassSerialName: String = rootClass.findAnnotation<SerialName>()?.value ?: rootClass.simpleName
     ?: throw IllegalArgumentException("Unable to determine the class name for '${rootClass.simpleName}'.")
 

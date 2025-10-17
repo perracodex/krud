@@ -17,7 +17,7 @@ import org.jetbrains.exposed.v1.jdbc.transactions.transaction
  * **Note** If the database value [db] is not set, the value used will be either the last Database instance created
  * or the value associated with the parent transaction (if this function is invoked in an existing transaction).
  *
- * The transaction takes into account the specified [sessionContext] instance, which may include for example
+ * The transaction takes into account the specified [sessionContext] instance, which may include, for example,
  * a database connection, a schema name, or other session-context-specific information.
  *
  * #### References

@@ -170,7 +170,7 @@ internal object RbacDashboardManager : KoinComponent {
     /**
      * Data class to hold the details necessary for rendering the RBAC dashboard.
      *
-     * @param isViewOnly Whether the actor has view-only access to the dashboard, or can make changes.
+     * @param isViewOnly Whether the actor has view-only access to the dashboard or can make changes.
      * @param rbacRoles The full list of RBAC roles.
      * @param targetRole The role being updated.
      * @param sessionRoleName The name of the current session role. Not necessarily the role being updated.

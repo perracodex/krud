@@ -92,7 +92,7 @@ internal class ActorService(
      *
      * @param actorId The id of the Actor to update.
      * @param actorRequest The new details for the [Actor].
-     * @return How many records were updated.
+     * @return The number of records that were updated.
      */
     suspend fun update(actorId: Uuid, actorRequest: ActorRequest): Int = withContext(Dispatchers.IO) {
         tracer.debug("Updating actor with ID: $actorId")
@@ -114,7 +114,7 @@ internal class ActorService(
     }
 
     /**
-     * Checks if there are any Actors in the database, or if the given usernames exist.
+     * Checks if there are any Actors in the database or if the given usernames exist.
      *
      * @param usernames The actors usernames to check for. If null, checks for any Actors.
      * @return True if there are actors for the given usernames in the database, false otherwise.

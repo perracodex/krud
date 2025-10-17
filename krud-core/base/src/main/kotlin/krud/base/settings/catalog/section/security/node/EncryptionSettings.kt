@@ -20,7 +20,7 @@ public data class EncryptionSettings internal constructor(
 ) {
 
     /**
-     * Configuration settings for a specific encryption.
+     * Configuration settings for specific encryption.
      *
      * @property algorithm Algorithm used for encrypting/decrypting data.
      * @property salt Salt used for encrypting/decrypting data.

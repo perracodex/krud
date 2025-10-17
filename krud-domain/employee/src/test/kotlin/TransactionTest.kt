@@ -53,7 +53,7 @@ class TransactionTest : KoinComponent {
      * support nested 'suspend' transactions.
      *
      * The test is done by creating an employee with a contact record.
-     * Creating a contact is done in a nested transaction within employee
+     * Creating a contact is done in a nested transaction within the employee
      * transaction as the parent.
      * This implies that this unit test will work with 3 transactions:
      * the outer one by the test, the middle one by the employee service,
@@ -100,7 +100,7 @@ class TransactionTest : KoinComponent {
                 message = "There must be 1 contact in the database."
             )
 
-            // Rollback the transaction, so no data is persisted.
+            // Roll back the transaction, so no data is persisted.
             // After this, the database must be empty again.
             rollback()
 
@@ -145,7 +145,7 @@ class TransactionTest : KoinComponent {
 
                 // Try to create an employee with an invalid contact detail to make the transaction fail.
                 // Done in an even one more nested transaction to test how it behaves.
-                // Expected all the transaction tree to be rolled back.
+                // Expected all the transaction-trees to be rolled back.
                 transaction {
                     val invalidEmployeeRequest = EmployeeRequest(
                         firstName = "AnyName",

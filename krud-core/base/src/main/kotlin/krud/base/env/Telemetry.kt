@@ -13,7 +13,7 @@ import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
 /**
  * Utility class for managing Micrometer metrics.
  *
- * The PrometheusMeterRegistry is a Micrometer registry that allows to monitor an application
+ * The PrometheusMeterRegistry is a Micrometer registry that allows monitoring an application
  * using Prometheus, a popular open-source monitoring system and time series database.
  *
  * #### References
@@ -43,7 +43,7 @@ public object Telemetry {
     /**
      * Provides a [PrometheusMeterRegistry] instance for managing application metrics.
      *
-     * By default, excludes metrics collection for the "/rbac" endpoint and any sub-paths.
+     * By default, excludes the metrics collection for the "/rbac" endpoint and any sub-paths.
      */
     public val registry: PrometheusMeterRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT).apply {
         config().meterFilter(
@@ -51,18 +51,18 @@ public object Telemetry {
                 // Append "/" to ensure proper matching at the end.
                 val route: String? = metricId.getTag(KEY_TAG_ROUTE)?.plus("/")
 
-                // Deny rbac endpoint that either starts with domain,
+                // Deny rbac endpoint that either starts with the domain
                 // or contains the domain modified by middlewares like a Rate Limiter.
                 return@deny (metricId.name == SERVER_REQUESTS_METRIC_ID_NAME) &&
-                        (route?.startsWith(RBAC_ROUTE) == true || route?.contains(RBAC_ROUTE) == true)
+                        (route?.startsWith(prefix = RBAC_ROUTE) == true || route?.contains(other = RBAC_ROUTE) == true)
             }
         )
     }
 
     /**
-     * Registers a new counter metric.
+     * Registers a new counter-metric.
      * Counters monitor monotonically increasing values. Counters may never be reset to a lesser value.
-     * If it is needed to track a value that goes up and down, then should use a Gauge instead.
+     * If it is necessary to track a value that goes up and down, then should use a Gauge instead.
      *
      * @param name The name of the counter.
      * @param description The description of the counter.
@@ -75,7 +75,7 @@ public object Telemetry {
      * Registers a new timer metric.
      * Timers are intended to track of a large number of short running events.
      * An example would be something like an HTTP request. Though "short running"
-     * is a bit subjective the assumption is that it should be under a minute.
+     * is a bit subjective, the assumption is that it should be under a minute.
      *
      * @param name The name of the timer.
      * @param description The description of the timer.

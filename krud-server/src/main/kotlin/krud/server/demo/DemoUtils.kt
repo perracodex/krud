@@ -69,7 +69,7 @@ internal object DemoUtils {
             unit = DateTimeUnit.MONTH
         )
 
-        // If active, then 80% chance of being active, otherwise onboarding.
+        // If active, then an 80% chance of being active, otherwise onboarding.
         @Suppress("MagicNumber")
         val status: EmploymentStatus = when (period.isActive) {
             true -> if (Random.nextInt(from = 0, until = 100) < 80) {

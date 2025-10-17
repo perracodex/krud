@@ -17,7 +17,7 @@ import kotlin.uuid.Uuid
 
 /**
  * Database table definition holding Actors.
- * An Actor is a user with specific role and designated access to a set of concrete scopes.
+ * An Actor is a user with a specific role and designated access to a set of concrete scopes.
  */
 public object ActorTable : TimestampedTable(name = "actor") {
     private val encryptor: Encryptor = EncryptionUtils.getEncryptor(type = EncryptionUtils.Type.AT_REST)

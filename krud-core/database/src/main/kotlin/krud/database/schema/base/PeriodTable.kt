@@ -9,7 +9,7 @@ import org.jetbrains.exposed.v1.core.*
 import org.jetbrains.exposed.v1.datetime.date
 
 /**
- * Base class for database tables that manage temporal data modelling. Designed to be extended,
+ * Base class for database tables that manage temporal data modeling. Designed to be extended,
  * this class provides foundational columns for tracking the active status and temporal boundaries
  * of periods associated with various entries.
  * This structure supports applications needing to capture historical data or manage ongoing events.

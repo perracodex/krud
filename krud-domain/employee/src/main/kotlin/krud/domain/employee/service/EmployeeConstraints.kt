@@ -69,7 +69,7 @@ internal object EmployeeConstraints {
     /**
      * Verifies the work email of the employee. Format and uniqueness are checked.
      *
-     * @param employeeId The ID of the employee being verified. `null` if the employee is new.
+     * @param employeeId The ID of the employee being verified. `null` If the employee is new.
      * @param request The request details to be verified.
      * @param reason The reason for the verification. To be included in error messages.
      * @param repository The [EmployeeRepository] to check for uniqueness.
@@ -118,7 +118,7 @@ internal object EmployeeConstraints {
     /**
      * Verifies the contact details of the employee.
      *
-     * @param employeeId The ID of the employee being verified. `null` if the employee is new.
+     * @param employeeId The ID of the employee being verified. `null` If the employee is new.
      * @param contactRequest The [ContactRequest] details to be verified.
      * @param reason The reason for the verification. To be included in error messages.
      * @param errors The list of errors to append to.

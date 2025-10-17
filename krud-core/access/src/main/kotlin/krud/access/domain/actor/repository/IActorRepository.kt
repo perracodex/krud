@@ -62,7 +62,7 @@ internal interface IActorRepository {
      *
      * @param actorId The id of the actor to update.
      * @param actorRequest The new details for the [Actor].
-     * @return How many records were updated.
+     * @return The number of records that were updated.
      */
     suspend fun update(actorId: Uuid, actorRequest: ActorRequest): Int
 
@@ -75,7 +75,7 @@ internal interface IActorRepository {
     suspend fun setLockedState(actorId: Uuid, isLocked: Boolean)
 
     /**
-     * Checks if there are any Actor in the database, or if the given usernames exist.
+     * Checks if there is any Actor in the database, or if the given usernames exist.
      *
      * @param usernames The actors usernames to check for. If null, checks for any actors.
      * @return True if there are actors for the given usernames in the database, false otherwise.

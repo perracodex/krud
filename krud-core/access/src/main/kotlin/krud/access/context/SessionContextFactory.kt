@@ -30,7 +30,7 @@ import kotlin.uuid.Uuid
 
 /**
  * Provides factory methods for constructing [SessionContext] instances from various authentication credential flows.
- * This object is primarily utilized by authentication mechanisms like JWT and OAuth to validate credentials
+ * This object is primarily used by authentication mechanisms like JWT and OAuth to validate credentials
  * and generate [SessionContext] instances. These instances are crucial for populating the [ApplicationCall]
  * with session details and actor-specific information throughout the lifecycle of an API call.
  *
@@ -170,7 +170,7 @@ internal object SessionContextFactory : KoinComponent {
             return null
         }
 
-        // Ensure the OAuth issuer matches expected configuration.
+        // Ensure the OAuth issuer matches the expected configuration.
         if (!AppSettings.security.oAuth.authorizeUrl.startsWith(jwt.issuer)) {
             tracer.error("Invalid OAuth issuer: ${jwt.issuer}")
             return null
@@ -182,7 +182,7 @@ internal object SessionContextFactory : KoinComponent {
             return null
         }
 
-        // Resolve the Actor ID. Return null if username claim is missing or blank.
+        // Resolve the Actor ID. Return null if the username claim is missing or blank.
         val actorId: Uuid = jwt.claims["actorId"]?.asString()?.toUuid() ?: run {
             tracer.error("Invalid OAuth username: Empty or missing username.")
             return null
@@ -202,7 +202,7 @@ internal object SessionContextFactory : KoinComponent {
     suspend fun from(sessions: CurrentSession): SessionContext? {
         // The session is configured to store the actor ID as a UUID.
         // If more information is needed, then a serializable data class could be used instead of the Actor Uuid.
-        // In such a case, the Sessions plugin configuration would need to be updated too besides the next line.
+        // In such a case, the Sessions plugin configuration would need to be updated too beside the next line.
         val actorId: Uuid? = sessions.get(name = SessionContext.SESSION_NAME) as Uuid?
         return actorId?.let {
             fromActor(actorId = actorId)

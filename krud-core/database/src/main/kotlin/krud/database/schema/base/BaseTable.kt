@@ -16,7 +16,7 @@ import kotlin.uuid.Uuid
 public abstract class BaseTable(private val name: String) : TimestampedTable(name = name) {
 
     /**
-     * Reference to actor who created the record.
+     * Reference to the actor who created the record.
      */
     public val createdBy: Column<Uuid> = kotlinUuid(
         name = "created_by"
@@ -30,7 +30,7 @@ public abstract class BaseTable(private val name: String) : TimestampedTable(nam
     )
 
     /**
-     * Reference to actor who last modified the record.
+     * Reference to the actor who last modified the record.
      */
     public val updatedBy: Column<Uuid> = kotlinUuid(
         name = "updated_by"

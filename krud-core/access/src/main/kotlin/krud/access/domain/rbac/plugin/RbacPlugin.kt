@@ -20,7 +20,7 @@ import krud.database.schema.admin.rbac.type.RbacScope
 import org.koin.ktor.ext.inject
 
 /**
- * Custom Ktor RBAC plugin intercepting calls to routes, and
+ * Custom Ktor RBAC plugin intercepting calls to routes and
  * applying RBAC checks based on the configured scope and access level.
  *
  * It ensures that only authorized Actors, as per the RBAC settings,

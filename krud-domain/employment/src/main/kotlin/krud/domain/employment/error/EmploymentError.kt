@@ -36,7 +36,7 @@ internal sealed class EmploymentError(
     cause = cause
 ) {
     /**
-     * Error for when an employment is not found for a concrete employee.
+     * Error for when an `employment` is not found for a concrete employee.
      *
      * @param employeeId The affected employee id.
      * @param employmentId The employment id that was not found.
@@ -62,7 +62,7 @@ internal sealed class EmploymentError(
     }
 
     /**
-     * Error for when an employee is not found for a concrete employment.
+     * Error for when an employee is not found for a concrete `employment`.
      *
      * @param employeeId The employee id that was not found.
      * @param reason Optional human-readable reason for the exception, providing more context.
@@ -90,7 +90,7 @@ internal sealed class EmploymentError(
      * where the end date is prior to the start date.
      *
      * @param employeeId The affected employee id.
-     * @param employmentId The employment id associated with the error. `null` if the employment is not yet created.
+     * @param employmentId The employment id associated with the error. `null` If the employment is not yet created.
      * @param startDate The start date of the employment period.
      * @param endDate The end date of the employment period.
      * @param field Optional field identifier, typically the input field that caused the error.
@@ -129,7 +129,7 @@ internal sealed class EmploymentError(
      * Error when the probation end date is prior to the employment start date.
      *
      * @param employeeId The affected employee id.
-     * @param employmentId The employment id associated with the error. `null` if the employment is not yet created.
+     * @param employmentId The employment id associated with the error. `null` If the employment is not yet created.
      * @param startDate The start date of the employment period.
      * @param probationEndDate The probation end date of the employment period.
      * @param field Optional field identifier, typically the input field that caused the error.

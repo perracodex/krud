@@ -18,12 +18,12 @@ import kotlin.uuid.Uuid
  * Represents a concrete RBAC scope rule for a concrete [RbacRole].
  *
  * A scope can be any concept: a database table, a REST endpoint, a UI element, etc.
- * Is up to the designer to define what a scope is, and act accordingly when its
+ * It is up to the designer to define what a scope is and act accordingly when its
  * associated RBAC rule is verified.
  *
  * @property id The unique id of the Scope Rule record.
  * @property roleId The associated parent [RbacRole] id.
- * @property scope The [RbacScope] to which the scope rule belong.
+ * @property scope The [RbacScope] to which the scope rule belongs.
  * @property accessLevel The required [RbacAccessLevel] for the [RbacScope].
  * @property fieldRules Optional [RbacFieldRule] list associated with the Scope Rule.
  * @property meta The metadata of the record.

@@ -11,7 +11,7 @@ import krud.database.schema.employment.type.EmploymentStatus
 import krud.database.schema.employment.type.WorkModality
 
 /**
- * Represents the request to create/update an employment.
+ * Represents the request to create/update an `employment`.
  *
  * @property period The employment's period details.
  * @property status The [EmploymentStatus] to set.

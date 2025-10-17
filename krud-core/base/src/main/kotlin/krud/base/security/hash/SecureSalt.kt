@@ -40,7 +40,7 @@ public data class SecureSalt private constructor(val salt: ByteArray, val length
          * Factory method to generate a new [SecureSalt] of a specified length.
          * This method uses a cryptographically strong random number generator.
          *
-         * @param length The desired length of the salt, in bytes. Default is 16-byte (128-bit).
+         * @param length The desired length of the salt, in bytes. The default is 16-byte (128-bit).
          * @return A new instance of [SecureSalt] with the specified length.
          */
         public fun generate(length: Int = 16): SecureSalt {

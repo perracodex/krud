@@ -19,7 +19,7 @@ internal interface IRbacFieldRuleRepository {
     /**
      * Updates an existing scope rule with the given set of [RbacFieldRuleRequest] entries.
      *
-     * All the existing field rules for the concrete scope rule will be replaced by the new ones.
+     * The new ones will replace all the existing field rules for the concrete scope rule.
      *
      * @param scopeRuleId The target [RbacScopeRuleRequest] being updated.
      * @param requestList The new set of [RbacFieldRuleRequest] entries to set.

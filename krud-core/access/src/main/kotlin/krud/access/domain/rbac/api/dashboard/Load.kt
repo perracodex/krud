@@ -39,7 +39,7 @@ internal fun Route.rbacDashboardLoadRoute() {
             sessionContext = sessionContext,
             roleId = call.parameters[RbacDashboardView.ROLE_KEY].toUuidOrNull()
         ).let { dashboardContext ->
-            // Respond with HTML view of the RBAC dashboard.
+            // Respond with the HTML view of the RBAC dashboard.
             call.respondHtml(status = HttpStatusCode.OK) {
                 RbacDashboardView.build(
                     html = this,

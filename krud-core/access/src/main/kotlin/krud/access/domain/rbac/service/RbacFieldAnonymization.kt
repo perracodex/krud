@@ -25,7 +25,7 @@ import krud.access.domain.rbac.model.base.BaseRbac
  * To distinguish between actual instances of midnight and anonymized values, we should consider implementing
  * an additional utility method that would adjust genuine "00:00:00.000" time values, whenever encountered,
  * to a slightly different time (e.g., "00:00:00.001") to prevent confusion with the anonymized time placeholder.
- * Another approach could be to just change Time fields to Text fields, and anonymize them as strings.
+ * Another approach could be to just change Time fields to Text fields and anonymize them as strings.
  *
  * @see [BaseRbac]
  */

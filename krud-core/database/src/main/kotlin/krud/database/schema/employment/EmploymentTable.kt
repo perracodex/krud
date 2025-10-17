@@ -23,7 +23,7 @@ import kotlin.uuid.Uuid
 /**
  * Database table definition for employments.
  *
- * An employee may have multiple employments, which indicates re-hiring.
+ * An employee may have multiple `employments`, which indicates re-hiring.
  */
 public object EmploymentTable : PeriodTable(name = "employment") {
     private val encryptor: Encryptor = EncryptionUtils.getEncryptor(type = EncryptionUtils.Type.AT_REST)

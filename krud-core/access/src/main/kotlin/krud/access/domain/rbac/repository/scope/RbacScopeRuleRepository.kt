@@ -32,7 +32,7 @@ internal class RbacScopeRuleRepository(
             }
 
             scopeRuleRequests.takeUnless { it.isNullOrEmpty() }?.let { scopeRuleRequests ->
-                // Batch insert new scope rules.
+                // Batch inserts new scope rules.
                 val newScopeRules: List<ResultRow> = RbacScopeRuleTable.batchInsert(
                     data = scopeRuleRequests
                 ) { scopeRuleRequest ->

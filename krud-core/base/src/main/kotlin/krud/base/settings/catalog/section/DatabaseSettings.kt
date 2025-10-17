@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 import krud.base.env.EnvironmentType
 
 /**
- * Database related settings.
+ * Database-related settings.
  *
  * @property name The name of the database.
  * @property path The database file location.
- * @property isLocalFile Whether the database is a local file, for example an H2 embedded database.
+ * @property isLocalFile Whether the database is a local file, for example, an H2 embedded database.
  * @property jdbcUrl The JDBC url database connection.
  * @property jdbcDriver The JDBC driver class name.
  * @property transactionMaxAttempts Max retries inside a transaction if a SQLException happens. Overridable per-transaction level.
@@ -22,7 +22,7 @@ import krud.base.env.EnvironmentType
  * @property minimumPoolIdle The minimum number of idle connections to maintain in the pool.
  * @property connectionPoolTimeoutMs The database connection pool timeout, (ms).
  * @property updateSchemaEnvironments The list f environments under which it is allowed to update the database schema.
- * @property useMigrations Whether to use migrations in order to set the database, or the schema creation via exposed.
+ * @property useMigrations Whether to use migrations to set the database, or the schema creation via exposed.
  * @property username Optional database username.
  * @property password Optional database password.
  */

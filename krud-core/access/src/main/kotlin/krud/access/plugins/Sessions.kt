@@ -30,7 +30,7 @@ public fun Application.configureSessions() {
         // Configured to store the actor ID in the session cookie.
         // If more information is needed, then a serializable data class could be used instead of actor Uuid.
         // In such a case, the SessionContextFactory in charge of parsing the session would need to be updated
-        // too besides the next line.
+        // too beside the next line.
         cookie<Uuid>(name = SessionContext.SESSION_NAME) {
             val session = SessionTransportTransformerEncrypt(
                 encryptionKey = encryptionKey,

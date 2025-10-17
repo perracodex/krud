@@ -30,7 +30,7 @@ public class Tracer(private val logger: Logger) {
     }
 
     /**
-     * Logs a message with warning severity level.
+     * Logs a message with the warning severity level.
      */
     public fun warning(message: String) {
         logger.warn(message)
@@ -96,7 +96,7 @@ public class Tracer(private val logger: Logger) {
      * ```
      */
     public companion object {
-        /** Toggle for full package name or simple name. */
+        /** Toggle for the full package name or simple name. */
         public const val LOG_FULL_PACKAGE: Boolean = true
 
         /**

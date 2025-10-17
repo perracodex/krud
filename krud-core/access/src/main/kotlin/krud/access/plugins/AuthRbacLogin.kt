@@ -15,10 +15,10 @@ import krud.base.context.clearSessionContext
 import krud.base.context.sessionContext
 
 /**
- * Refreshes the default actors, and configures the RBAC form login authentication.
+ * Refreshes the default actors and configures the RBAC from login authentication.
  *
  * Demonstrates how to use form-based authentication, in which case
- * principal are not propagated across different requests, so we
+ * principal is not propagated across different requests, so we
  * must use [Sessions] to store the actor information.
  *
  * #### References
@@ -27,7 +27,7 @@ import krud.base.context.sessionContext
 @OptIn(RbacApi::class)
 public fun Application.configureRbac() {
 
-    // Configure the RBAC form login authentication.
+    // Configure the RBAC from login authentication.
     authentication {
         form(name = RbacLoginView.RBAC_LOGIN_PATH) {
             userParamName = RbacLoginView.KEY_USERNAME

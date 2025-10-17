@@ -42,13 +42,13 @@ public object ActorSyncService : KoinComponent {
     }
 
     /**
-     * Refreshes the Credential and RBAC services to ensure caches are up-to-date,
+     * Refreshes the Credential and RBAC services to ensure caches are up to date,
      * and provisions default Actors and roles if none exist.
      */
     public suspend fun refresh(): Unit = withContext(Dispatchers.IO) {
         tracer.info("Refreshing actors.")
 
-        // Ensure the database has any Actors, if none exist then create the default ones.
+        // Ensure the database has any Actors, if none exist, then create the default ones.
         createIfMissing()
 
         val credentialJob: Job = launch {

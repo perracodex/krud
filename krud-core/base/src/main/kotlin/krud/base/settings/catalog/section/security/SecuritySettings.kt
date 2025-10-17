@@ -13,12 +13,12 @@ import krud.base.settings.catalog.section.security.node.auth.JwtAuthSettings
 import krud.base.settings.catalog.section.security.node.auth.OAuthSettings
 
 /**
- * Top level section for the Security related settings.
+ * Top level section for the Security-related settings.
  *
  * @property isEnabled Whether to enable Basic and JWT authentication.
  * @property useSecureConnection Whether to use a secure connection or not.
  * @property encryption Settings related to encryption, such as the encryption keys.
- * @property constraints Settings related to security constraints, such endpoints rate limits.
+ * @property constraints Settings related to security constraints, such as endpoint rate limits.
  * @property basicAuth Settings related to basic authentication, such as the realm and provider name.
  * @property jwtAuth Settings related to JWT authentication, such as the JWT secrets.
  * @property oAuth Settings related to OAuth authentication, such as the client id and secret.

@@ -23,7 +23,7 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * Security class responsible for verifying JWT tokens.
  *
- * This class contains the logic for verifying JWT tokens using HMAC256 algorithm.
+ * This class contains the logic for verifying JWT tokens using `HMAC256` algorithm.
  * If the token is invalid or any exception occurs, an UnauthorizedException will be thrown.
  */
 @TokenApi
@@ -136,7 +136,7 @@ internal object TokenService {
             val verifier: JWTVerifier = JWT.require(algorithm).build()
             val decodedToken: DecodedJWT = JWT.decode(token)
 
-            // Verify the token. This step ill throw an exception if invalid, or continue if valid.
+            // Verify the token. This step will throw an exception if invalid or continue if valid.
             verifier.verify(decodedToken)
             TokenState.Valid(token = token)
         } catch (e: TokenExpiredException) {

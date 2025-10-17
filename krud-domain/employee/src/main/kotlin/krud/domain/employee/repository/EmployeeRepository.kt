@@ -145,13 +145,13 @@ internal class EmployeeRepository(
                 onColumn = EmployeeTable.id,
                 otherColumn = EmploymentTable.employeeId
             ).selectAll().where {
-                // Search in first name.
+                // Search in the first name.
                 (EmployeeTable.firstName.lowerCase() like "%$searchTerm%")
             }.orWhere {
-                // Search in last name.
+                // Search in the last name.
                 (EmployeeTable.lastName.lowerCase() like "%$searchTerm%")
             }.orWhere {
-                // Search within the local part of work email (before '@').
+                // Search within the local part of the work email (before '@').
                 EmployeeTable.workEmail.regexp(pattern = emailLocalSegmentPattern, caseSensitive = false)
             }.orWhere {
                 // Search work email starting with the search term.
@@ -160,7 +160,7 @@ internal class EmployeeRepository(
                 // Search work email ending with the search term.
                 (EmployeeTable.workEmail.lowerCase() like "%$searchTerm")
             }.orWhere {
-                // Search within the local part of contact email (before '@').
+                // Search within the local part of the contact email (before '@').
                 ContactTable.email.regexp(pattern = emailLocalSegmentPattern, caseSensitive = false)
             }.orWhere {
                 // Search contact email starting with the search term.

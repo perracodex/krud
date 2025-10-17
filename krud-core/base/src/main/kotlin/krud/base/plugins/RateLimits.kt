@@ -12,7 +12,7 @@ import kotlin.time.Duration.Companion.milliseconds
 /**
  * Configures the routes [RateLimit] plugin, which defines the maximum allowed calls per period.
  *
- * The [RateLimit] plugin allows to limit the number of requests a client can make within
+ * The [RateLimit] plugin allows limiting the number of requests a client can make within
  * a certain time period. Ktor provides different means for configuring rate limiting.
  * For example, enable rate limiting globally for a whole application or configure
  * different rate limits for different resources. Also, to configure rate limiting based

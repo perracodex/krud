@@ -46,7 +46,7 @@ internal object DatabasePooling {
 
             // Disables auto-commit on connections to allow explicit transaction management,
             // thereby ensuring each transaction is atomic and preventing automatic commits
-            // after each individual statement.
+            // after each statement.
             isAutoCommit = false
 
             // Database credentials for authentication.
