@@ -9,7 +9,6 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ClosedSendChannelException
 import krud.base.env.Tracer
-import krud.base.event.AsyncScope.isParallel
 
 /**
  * An object that manages asynchronous actions.
@@ -77,7 +76,7 @@ public object AsyncScope {
      * Enqueues a new suspending action to be executed.
      *
      * The action will be executed either in parallel (default) or sequentially based on
-     * the value of [isParallel].
+     * the value of [AsyncScope.isParallel].
      *
      * @param action The suspending action to enqueue.
      * @throws Exception if the action cannot be enqueued because the channel is closed.
