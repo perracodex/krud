@@ -26,7 +26,7 @@ public object EmploymentDomainInjection {
         return module {
             // Scoped definitions within RequestScope for a single request lifecycle.
             // Services receive the SessionContext as a parameter. Repositories,
-            // which should only be accessed by services, do not receive it directly.
+            // which services should only access, do not receive it directly.
 
             scope<RequestScope> {
                 scopedOf(::EmploymentRepository) {
