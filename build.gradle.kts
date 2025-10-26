@@ -117,10 +117,14 @@ dependencies {
 
 /** Part of the fat JAR workflow: Task to copy the SSL keystore file for secure deployment. */
 val copyKeystoreTask: TaskProvider<Copy> by tasks.registering(Copy::class) {
-    from("keystore.p12")
+    from(".certificate/keystore.p12")
     into("build/libs")
     doFirst {
-        println("Copying keystore from ${project.layout.projectDirectory}/keystore.p12 to ${project.layout.buildDirectory}/libs.")
+        println(
+            "Copying keystore from " +
+                    "${project.layout.projectDirectory}/.certificate/keystore.p12 " +
+                    "to ${project.layout.buildDirectory}/libs."
+        )
     }
 }
 

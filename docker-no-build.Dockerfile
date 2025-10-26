@@ -21,7 +21,7 @@ RUN mkdir -p /app
 # Copy the pre-built jar file from the source directory to the image.
 COPY build/libs/krud-1.0.0-all.jar /app/krud-1.0.0-all.jar
 # Copy the keystore file from the source directory to the image.
-COPY keystore.p12 /app/keystore.p12
+COPY .certificate/keystore.p12 /app/keystore.p12
 
 #-------------------------------------------------------------------------------------------------
 # Environment variables.

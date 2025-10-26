@@ -30,7 +30,7 @@ RUN mkdir -p /app
 # Copy the newly built jar file from the build stage to the final image.
 COPY --from=build /home/gradle/src/build/libs/krud-1.0.0-all.jar /app/krud-1.0.0-all.jar
 # Copy the keystore file from the source directory to the final image.
-COPY keystore.p12 /app/keystore.p12
+COPY .certificate/keystore.p12 /app/keystore.p12
 
 #-------------------------------------------------------------------------------------------------
 # Environment variables.

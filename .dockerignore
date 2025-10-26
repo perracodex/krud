@@ -6,7 +6,7 @@
 !gradle/**
 !gradlew
 !gradlew.bat
-!keystore.p12
+!.certificate/**
 !krud-core/**
 !krud-domain/**
 !krud-server/**
