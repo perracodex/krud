@@ -117,18 +117,18 @@ dependencies {
 
 /** Part of the fat JAR workflow: Task to copy the SSL keystore file for secure deployment. */
 val copyKeystoreTask: TaskProvider<Copy> by tasks.registering(Copy::class) {
-    from(".certificate/keystore.p12")
+    from(".certificate/ktor.localhost.p12")
     into("build/libs")
     doFirst {
         println(
             "Copying keystore from " +
-                    "${project.layout.projectDirectory}/.certificate/keystore.p12 " +
+                    "${project.layout.projectDirectory}/.certificate/ktor.localhost.p12 " +
                     "to ${project.layout.buildDirectory}/libs."
         )
     }
 }
 
-/** Part of the fat JAR workflow: Ensures SSL keystore file is placed in the build output after the fat JAR creation. */
+/** Part of the fat JAR workflow: Ensures the SSL keystore file is placed in the build output after the fat JAR creation. */
 tasks.named("buildFatJar") {
     finalizedBy(copyKeystoreTask)
     doLast {

@@ -16,7 +16,7 @@ services:
       - "5005:5005"
     environment:
       JAVA_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005" # Enables remote debugging on port 5005
-      KRUD_KTOR_SECURITY_SSL_KEY_STORE: "/app/keystore.p12"
+      KRUD_KTOR_SECURITY_SSL_KEY_STORE: "/app/ktor.localhost.p12"
     networks:
       - default_network
 

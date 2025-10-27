@@ -1,0 +1,7 @@
+openssl genrsa -out ktor.localhost.key 2048
+
+openssl req -new -key ktor.localhost.key -out ktor.localhost.csr -subj "/C=ES/ST=Catalonia/L=Barcelona/O=Local Dev/OU=Ktor/CN=ktor.localhost"
+
+openssl x509 -req -in ktor.localhost.csr -signkey ktor.localhost.key -out ktor.localhost.crt -days 3650 -sha256 -extfile ktor.localhost.ext
+
+openssl pkcs12 -export -out ktor.localhost.p12 -inkey ktor.localhost.key -in ktor.localhost.crt -name "Ktor Localhost Certificate"

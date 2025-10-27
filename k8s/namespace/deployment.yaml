@@ -25,4 +25,4 @@ spec:
             - name: JAVA_OPTS
               value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
             - name: KRUD_KTOR_SECURITY_SSL_KEY_STORE
-              value: "/app/keystore.p12"
+              value: "/app/ktor.localhost.p12"

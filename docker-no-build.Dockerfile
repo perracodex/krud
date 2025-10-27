@@ -21,7 +21,7 @@ RUN mkdir -p /app
 # Copy the pre-built jar file from the source directory to the image.
 COPY build/libs/krud-1.0.0-all.jar /app/krud-1.0.0-all.jar
 # Copy the keystore file from the source directory to the image.
-COPY .certificate/keystore.p12 /app/keystore.p12
+COPY .certificate/ktor.localhost.p12 /app/ktor.localhost.p12
 
 #-------------------------------------------------------------------------------------------------
 # Environment variables.
@@ -30,7 +30,7 @@ COPY .certificate/keystore.p12 /app/keystore.p12
 ENV KRUD_KTOR_DEPLOYMENT_HOST="0.0.0.0"
 
 # Set the SSL key location.
-ENV KRUD_KTOR_SECURITY_SSL_KEY_STORE="/app/keystore.p12"
+ENV KRUD_KTOR_SECURITY_SSL_KEY_STORE="/app/ktor.localhost.p12"
 
 # To override more configuration settings at image level add them here.
 # For more settings see the existing 'conf' files in the Base module, under the resources folder.
